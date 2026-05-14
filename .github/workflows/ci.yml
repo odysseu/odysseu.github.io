@@ -17,7 +17,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/texlive/texlive:small-2024
+      image: ghcr.io/texlive/texlive:latest-small
     
     steps:
       - name: Checkout repository
