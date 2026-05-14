@@ -1,0 +1,109 @@
+name: Build and Deploy CV
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '*.tex'
+      - '.github/workflows/ci.yml'
+      - 'generate_cv_previews.py'
+      - 'build_cv_website.sh'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '*.tex'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/texlive/texlive:small-2024
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Install dependencies
+        run: |
+          apt-get update
+          apt-get install -y ghostscript python3 python3-pip git
+          pip3 install Pillow
+
+      - name: Compile LaTeX files (Simple versions)
+        run: |
+          echo "Compiling simple versions..."
+          for lang in english french; do
+            if [ -f "cv_${lang}_simple.tex" ]; then
+              pdflatex -interaction=nonstopmode "cv_${lang}_simple.tex" || true
+              pdflatex -interaction=nonstopmode "cv_${lang}_simple.tex" || true
+            fi
+          done
+
+      - name: Compile LaTeX files (Full versions)
+        run: |
+          echo "Compiling full versions..."
+          for lang in english french; do
+            if [ -f "cv_${lang}_full.tex" ]; then
+              pdflatex -interaction=nonstopmode "cv_${lang}_full.tex" || true
+              pdflatex -interaction=nonstopmode "cv_${lang}_full.tex" || true
+            fi
+          done
+
+      - name: Compile LaTeX files (Backwards compatibility)
+        run: |
+          echo "Compiling backwards compatibility versions..."
+          for lang in english french; do
+            if [ -f "cv_${lang}.tex" ]; then
+              pdflatex -interaction=nonstopmode "cv_${lang}.tex" || true
+              pdflatex -interaction=nonstopmode "cv_${lang}.tex" || true
+            fi
+          done
+
+      - name: Generate preview images
+        run: |
+          echo "Generating preview images..."
+          python3 generate_cv_previews.py
+
+      - name: Update index.html
+        run: |
+          echo "Updating index.html..."
+          chmod +x build_cv_website.sh
+          ./build_cv_website.sh
+
+      - name: Commit and push changes
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          
+          # Add all generated files
+          git add -A
+          
+          # Check if there are changes
+          if ! git diff --cached --quiet; then
+            git commit -m "Auto-build CV PDFs and previews [skip ci]"
+            git push
+          else
+            echo "No changes to commit"
+          fi
+
+      - name: Upload artifacts
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: .
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

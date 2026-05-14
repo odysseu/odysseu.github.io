@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Simple script to generate CV previews using ghostscript
+Script to generate CV previews using ghostscript
 Usage: python3 generate_cv_previews.py
 """
 
@@ -45,9 +45,17 @@ def create_pdf_preview_gs(pdf_file, preview_file, width=200):
 def main():
     print("=== Creating CV Previews ===")
     
-    # Create previews for both CVs
-    create_pdf_preview_gs('cv_english.pdf', 'english_cv_preview.png')
-    create_pdf_preview_gs('cv_french.pdf', 'french_cv_preview.png')
+    # Define all CV versions: (pdf_file, preview_file, display_name)
+    cv_versions = [
+        ('cv_english.pdf', 'english_simple_cv_preview.png', 'English Simple'),
+        ('cv_english.pdf', 'english_full_cv_preview.png', 'English Full'),
+        ('cv_french.pdf', 'french_simple_cv_preview.png', 'French Simple'),
+        ('cv_french.pdf', 'french_full_cv_preview.png', 'French Full'),
+    ]
+    
+    # Create previews for all versions
+    for pdf_file, preview_file, _ in cv_versions:
+        create_pdf_preview_gs(pdf_file, preview_file)
     
     print("=== Preview Generation Complete ===")
 

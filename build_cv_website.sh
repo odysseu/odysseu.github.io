@@ -1,202 +1,66 @@
 #!/bin/bash
 
-# Comprehensive script to build CV website
+# Comprehensive script to build CV website with simple and full versions
 # Usage: ./build_cv_website.sh
 
-# Check if texlive-full is installed, if not install it
+# Check if LaTeX is installed, if not install minimal required packages
 echo "=== Checking LaTeX Installation ==="
 if ! command -v pdflatex &> /dev/null; then
-    echo "LaTeX not found. Installing texlive-full..."
+    echo "LaTeX not found. Installing minimal TeX Live with required packages..."
     sudo apt update
-    sudo apt install -y texlive-full
+    sudo apt install -y texlive texlive-latex-extra texlive-fonts-extra texlive-lang-french
     if [ $? -ne 0 ]; then
-        echo "❌ Failed to install texlive-full. Please install it manually with: sudo apt install texlive-full"
+        echo "❌ Failed to install TeX Live packages. Please install manually with:"
+        echo "   sudo apt install texlive texlive-latex-extra texlive-fonts-extra texlive-lang-french"
         exit 1
     fi
-    echo "✓ texlive-full installed successfully"
+    echo "✓ TeX Live installed successfully"
 else
     echo "✓ LaTeX is already installed"
 fi
 
 echo "=== Building CV Website ==="
 
-# Step 1: Compile LaTeX files to PDF (if source files exist)
+# Step 1: Compile LaTeX files to PDF
 echo "1. Compiling LaTeX files..."
 
-if [ -f "cv_english.tex" ]; then
-    echo "  - Compiling cv_english.tex..."
-    echo "    Running pdflatex (first pass)..."
-    if pdflatex -interaction=nonstopmode cv_english.tex; then
-        echo "    Running pdflatex (second pass for references)..."
-        if pdflatex -interaction=nonstopmode cv_english.tex; then
-            echo "  ✓ cv_english.pdf generated successfully"
+# Define all CV versions
+CV_VERSIONS=("english_simple" "english_full" "french_simple" "french_full")
+
+for version in "${CV_VERSIONS[@]}"; do
+    tex_file="cv_${version}.tex"
+    if [ -f "$tex_file" ]; then
+        echo "  - Compiling ${tex_file}..."
+        echo "    Running pdflatex (first pass)..."
+        if pdflatex -interaction=nonstopmode "$tex_file"; then
+            echo "    Running pdflatex (second pass for references)..."
+            if pdflatex -interaction=nonstopmode "$tex_file"; then
+                echo "  ✓ cv_${version}.pdf generated successfully"
+            else
+                echo "  ⚠ ${tex_file} second pass failed, but first pass succeeded"
+            fi
         else
-            echo "  ⚠ cv_english.tex second pass failed, but first pass succeeded"
+            echo "  ✗ ${tex_file} compilation failed"
+            if [ -f "cv_${version}.pdf" ]; then
+                echo "  ℹ Using existing cv_${version}.pdf file"
+            else
+                echo "  ⚠ No cv_${version}.pdf available"
+            fi
         fi
     else
-        echo "  ✗ cv_english.tex compilation failed"
-        if [ -f "cv_english.pdf" ]; then
-            echo "  ℹ Using existing cv_english.pdf file"
-        else
-            echo "  ⚠ No cv_english.pdf available"
-        fi
+        echo "  ⚠ ${tex_file} not found, skipping"
     fi
-else
-    echo "  ⚠ cv_english.tex not found, using existing cv_english.pdf if available"
-fi
+done
 
-if [ -f "cv_french.tex" ]; then
-    echo "  - Compiling cv_french.tex..."
-    echo "    Running pdflatex (first pass)..."
-    if pdflatex -interaction=nonstopmode cv_french.tex; then
-        echo "    Running pdflatex (second pass for references)..."
-        if pdflatex -interaction=nonstopmode cv_french.tex; then
-            echo "  ✓ cv_french.pdf generated successfully"
-        else
-            echo "  ⚠ cv_french.tex second pass failed, but first pass succeeded"
-        fi
-    else
-        echo "  ✗ cv_french.tex compilation failed"
-        if [ -f "cv_french.pdf" ]; then
-            echo "  ℹ Using existing cv_french.pdf file"
-        else
-            echo "  ⚠ No cv_french.pdf available"
-        fi
-    fi
-else
-    echo "  ⚠ cv_french.tex not found, using existing cv_french.pdf if available"
-fi
-
-# Step 2: Generate preview images from PDFs (if PDFs exist)
+# Step 2: Generate preview images from PDFs
 echo "2. Generating preview images..."
-if [ -f "cv.pdf" ] || [ -f "cv_french.pdf" ]; then
-    python3 generate_cv_previews.py
-else
-    echo "  ⚠ No PDF files found, skipping preview generation"
-fi
-
-# Step 3: Create/update HTML file
-echo "3. Creating HTML interface..."
-
-cat > index.html << 'EOF'
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ulysse Boucherie - CV Download</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-        .container {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            text-align: center;
-            max-width: 800px;
-            width: 100%;
-        }
-        h1 {
-            color: #333;
-            margin-bottom: 30px;
-        }
-        .cv-options {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-        .cv-option {
-            cursor: pointer;
-            transition: transform 0.2s;
-            text-align: center;
-        }
-        .cv-option:hover {
-            transform: scale(1.05);
-        }
-        .cv-option img {
-            width: 200px;
-            height: 280px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            object-fit: contain;
-            background-color: white;
-        }
-        .cv-option p {
-            margin-top: 10px;
-            font-weight: bold;
-            color: #555;
-        }
-        .note {
-            margin-top: 30px;
-            color: #777;
-            font-size: 14px;
-        }
-        @media (max-width: 600px) {
-            .cv-options {
-                flex-direction: column;
-                gap: 20px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Download My CV</h1>
-        <div class="cv-options">
-            <div class="cv-option" onclick="downloadCV('english')">
-                <img src="english_cv_preview.png" alt="English CV Preview">
-                <p>English Version</p>
-            </div>
-            <div class="cv-option" onclick="downloadCV('french')">
-                <img src="french_cv_preview.png" alt="French CV Preview">
-                <p>French Version</p>
-            </div>
-        </div>
-        <div class="note">
-            <p>Click on the preview images above to download the respective CV version.</p>
-        </div>
-    </div>
-    
-    <script>
-        function downloadCV(language) {
-            const link = document.createElement('a');
-            
-            if (language === 'english') {
-                link.href = 'cv_english.pdf';
-                link.download = 'Ulysse_Boucherie_CV_English.pdf';
-            } else {
-                link.href = 'cv_french.pdf';
-                link.download = 'Ulysse_Boucherie_CV_French.pdf';
-            }
-            
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-    </script>
-</body>
-</html>
-EOF
-
-echo "  ✓ index.html created"
+python3 generate_cv_previews.py
 
 echo "=== Build Complete ==="
 echo "Generated files:"
-for file in cv_english.pdf cv_french.pdf english_cv_preview.png french_cv_preview.png index.html; do
+all_files=("cv_english_simple.pdf" "cv_english.pdf" "cv_french_simple.pdf" "cv_french.pdf" "english_simple_cv_preview.png" "english_full_cv_preview.png" "french_simple_cv_preview.png" "french_full_cv_preview.png")
+
+for file in "${all_files[@]}"; do
     if [ -f "$file" ]; then
         size=$(du -h "$file" | cut -f1)
         echo "  ✓ $file ($size)"
@@ -206,4 +70,4 @@ for file in cv_english.pdf cv_french.pdf english_cv_preview.png french_cv_previe
 done
 
 echo ""
-echo "You can now open index.html in a browser to see the CV download page with preview buttons."
+echo "PDFs and preview images generated. Make sure index.html exists and references the preview images."

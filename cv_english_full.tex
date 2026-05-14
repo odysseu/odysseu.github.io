@@ -1,0 +1,373 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[T1]{fontenc}
+
+\usepackage{fontawesome}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[colorlinks,pdftex]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{eurosym}
+\usepackage{xcolor}
+\usepackage{xfrac}
+\usepackage{vwcol} 
+\usepackage{adjustbox}
+\usepackage{longtable}
+\usepackage{array}
+\definecolor{myBlue}{rgb}{0,0,0.55}
+
+
+\hypersetup{
+    urlcolor = {[rgb]{0,0,0}}
+}
+
+\newcommand\dunderline[3][-1pt]{{\%
+  \sbox0{#3}%
+  \ooalign{\copy0\cr\rule[\dimexpr#1-#2\relax]{\wd0}{#2}}}
+
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\usepackage{geometry}
+\geometry{top=0.2cm, bottom=0.4cm, left=0.3cm, right=0.3cm}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-1pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2\vspace{-0.8pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{1.15pt}
+  \small
+  \item
+    \begin{tabular*}{0.97\textwidth}{l @{\extracolsep{\fill}}r}
+      \normalsize{\textbf{#1}}   & #2 \\
+      \small{#3} & #4 \\
+    \end{tabular*}
+  \vspace{1.5pt}
+}
+
+\def\Plus{\texttt{+\space}}
+
+% -------- ORIGINAL ------------
+
+\newcommand{\resumeSubItem}[2]{
+    \small{\resumeItem{#1}{#2}\vspace{-4pt}}
+	
+}
+
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2pt}}
+
+
+\newcommand{\resumeProjectListStart}{\begin{minipage}{0.97\textwidth} 
+                                     \begin{itemize}[leftmargin=5mm]
+                                     \vspace{3pt}}
+\newcommand{\resumeProjectListEnd}{\end{itemize} 
+                                   \end{minipage}}
+\newcommand{\resumeProjectItem}[1]{
+    \item\small{#1}
+    }
+
+% New commands for detailed version
+\newcommand{\resumeDetailedProject}[5]{
+    \item\small{
+        \textbf{#1} \hfill \textit{#2} \\ 
+        \begin{minipage}{0.95\textwidth}
+            \small{\textbf{Languages:} #3 \\ 
+            \textbf{Tools/Packages:} #4 \\ 
+            \textbf{Challenges:} #5}
+        \end{minipage}
+    }
+    \vspace{3pt}
+}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+
+%----------HEADING-----------------
+\begin{center}
+  \begin{minipage}{0.97\textwidth}
+      \begin{minipage}[c]{0.6\linewidth}
+          \huge \textbf{Ulysse \textsc{Boucherie}}
+          \\
+          \emph{\large{DevOps Engineer \& Data Scientist (MSc.)}}
+      \end{minipage}
+      \hfill
+      \begin{minipage}[c]{0.215\linewidth}
+          \begin{tabular*}{\textwidth}{c@{\extracolsep{\fill}} l}
+              \href{mailto:uboucherie1@gmail.com}{\raisebox{-0.055\height}{\faEnvelope}} & \href{mailto:uboucherie1@gmail.com}{\small{uboucherie1@gmail.com}} \\
+              \href{https://github.com/odysseu}{\raisebox{-0.035\height}{\faGlobe}} & \href{https://odysseu.github.io/}{\small{odysseu.github.io}} \\
+              \href{https://github.com/odysseu}{\raisebox{-0.035\height}{\faGithub}} & \href{https://github.com/odysseu}{\small{odysseu}} \\
+              \href{https://www.linkedin.com/in/ulysse-boucherie-7a3b2b111/}{\raisebox{-0.0925\height}{\faLinkedinSquare}} & \href{https://www.linkedin.com/in/ulysse-boucherie-7a3b2b111/}{\small{in/ulysse.boucherie}} \\
+              {\raisebox{-0.0925\height}{\faHome}} & \small{Fontainebleau, France}
+          \end{tabular*}
+      \end{minipage}
+  \end{minipage}
+  \end{center}
+
+
+%------------PROJET-----------------------
+
+\begin{center}
+\begin{minipage}{0.5\textwidth}
+    \centering
+    \large \textbf{DevOps and Data Engineer modernizing Public Statistical Services}
+\end{minipage}
+\end{center}
+
+\vspace{-5mm}
+
+%-----------EXPERIENCE-----------------
+\section{Experience}
+
+\resumeSubHeadingListStart
+
+\vspace{0.75mm}
+
+
+\resumeSubheading{Ministry of the Interior}{Paris, France}{Data Scientist and IT Technical Referent}{2024 - Present}
+
+Responsible for publications on economic and financial crime
+\resumeProjectListStart
+
+\resumeDetailedProject
+    {ETL Pipeline Redesign}
+    {2024-Present}
+    {Python, SQL, R}
+    {Apache Airflow, Pandas, NumPy, DuckDB, PostgreSQL}
+    {Legacy systems with 20+ years of technical debt; Resistance to change from non-technical stakeholders; Data quality issues in source systems; Need to maintain production during migration}
+    {Redesigned ETL processes for 20\plus agents, reducing the delay between data acquisition and production by over 80\%. Implemented incremental processing, data validation frameworks, and automated alerting. Trained team members on new processes and tools.}
+
+\resumeDetailedProject
+    {Culture of Change Implementation}
+    {2024-Present}
+    {Python, Markdown, Bash}
+    {Git, GitHub, Docker, Jupyter, VS Code}
+    {Diverse audience with varying technical skills (from Excel-only to advanced Python); resistance to adopting new tools; need to demonstrate immediate value}
+    {Implemented a culture of change with modern tools and methods. Created documentation, templates, and starter kits. Organized training sessions and workshops. Built internal tools to lower the barrier to entry for non-technical users.}
+
+\resumeDetailedProject
+    {Open-Source Publication Tools}
+    {2024-Present}
+    {Python, TypeScript, JavaScript}
+    {React, FastAPI, Pandas, GitHub Actions, Docker}
+    {Balancing flexibility with standardization; ensuring reproducibility; managing dependencies; security considerations for public-facing tools}
+    {Developed internal and open-source tools for the industrialized publication of articles and content for the general public, reducing technical debt and dependencies. Implemented CI/CD pipelines, automated testing, and documentation generation.}
+
+\resumeDetailedProject
+    {LLM for Text Clustering}
+    {2024-Present}
+    {Python}
+    {Transformers, scikit-learn, Sentence-BERT, HuggingFace}
+    {Privacy constraints (NDA); handling French text with technical jargon; model selection and fine-tuning; performance optimization}
+    {Co-designed, developed, and deployed LLM models to cluster free-text survey responses. Implemented prompt engineering, evaluated multiple model architectures, and deployed solution in production environment.}
+
+\resumeDetailedProject
+    {Economic Crime Studies}
+    {2024-Present}
+    {Python, R, SQL}
+    {Pandas, ggplot2, dplyr, PostgreSQL}
+    {Data from multiple sources (Police Nationale, Gendarmerie) with different formats; sensitive data handling; need for reproducible analysis}
+    {Wrote studies on economic and financial crime using data from the Police Nationale and Gendarmerie. Developed standardized analysis pipelines and visualization templates.}
+
+\resumeProjectListEnd
+
+\resumeSubheading{INSEE}{Nantes, France}{DevOps Engineer}{2021 -- 2024}
+
+DevOps and support for INSEE's data science platform
+\resumeProjectListStart
+
+\resumeDetailedProject
+    {Onyxia Platform Development}
+    {2021-2024}
+    {Go, Python, TypeScript, YAML}
+    {Kubernetes, Helm, Docker, GitLab CI/CD, ArgoCD, Vault, Prometheus, Grafana}
+    {Complex multi-tenant architecture; security requirements for government data; integration with legacy systems; scalability needs}
+    {Co-developed and installed the Platform As A Service (\href{https://github.com/InseeFrLab/onyxia}{Onyxia}). Designed microservices architecture, implemented authentication/authorization, and deployed monitoring stack.}
+
+\resumeDetailedProject
+    {Modern Stack Implementation}
+    {2021-2024}
+    {Bash, Python, YAML}
+    {Docker, Helm, GitLab pipelines, GitHub Actions, Grafana, Prometheus, Vault, Terraform}
+    {Resistance to change from existing team; need to maintain old systems during transition; training requirements for 500+ users}
+    {Developed and implemented a new cutting-edge technical stack. Created migration guides, automated deployment processes, and reduced deployment time from weeks to hours (10x acceleration).}
+
+\resumeDetailedProject
+    {Data Scientist Support}
+    {2021-2024}
+    {Python, R, Bash}
+    {JupyterHub, RStudio Server, PyCharm, VS Code, Kubernetes}
+    {Wide range of user skill levels (beginners to advanced); diverse use cases (notebooks, dashboards, IDEs); resource constraints}
+    {Provided support to data scientists, from beginners to advanced, for integrating their services (notebooks, internal data visualization applications, IDEs: RStudio \& PyCharm). Developed templates, documentation, and best practices.}
+
+\resumeProjectListEnd
+
+\resumeSubheading{INSEE}{Nantes, France}{Data Platform Engineer}{2020 -- 2021}
+
+System administrator for the internal data science platform
+\resumeProjectListStart
+
+\resumeDetailedProject
+    {Platform Components Deployment}
+    {2020-2021}
+    {PowerShell, Batch, Python}
+    {Windows Server, Active Directory, IIS, SQL Server}
+    {Legacy infrastructure with limited resources; security constraints; need for high availability; complex user management}
+    {Implemented components enabling 500+ INSEE data scientists to save up to 80\% of their time in deploying internal tools and studies. Automated deployment scripts and created self-service portals.}
+
+\resumeDetailedProject
+    {Resource Monitoring System}
+    {2020-2021}
+    {Python, PowerShell}
+    {Prometheus, Grafana, Windows Performance Counters}
+    {Limited visibility into resource usage; shared physical resources; competing priorities; need for historical data}
+    {Set up monitoring and supervision of processes to manage shared physical resources (Windows Server). Optimized resource usage by 20\%. Implemented alerting and capacity planning tools.}
+
+\resumeDetailedProject
+    {Code Translation Initiative}
+    {2020-2021}
+    {Python, R}
+    {Pandas, tidyverse, reticulate}
+    {20-year old proprietary codebase; limited documentation; resistance from users comfortable with old system; compatibility requirements}
+    {Initiated projects to translate code to move away from a proprietary data analysis license that had been in place for 20 years. Developed migration tooling and provided training on open-source alternatives.}
+
+\resumeProjectListEnd
+
+\resumeSubheading{Central Statistics Office}{Dublin, Ireland}{End-of-studies Internship}{2020}
+Statistical Assistant
+\resumeProjectListStart
+
+\resumeDetailedProject
+    {Annual Statistics Report}
+    {2020}
+    {R, LaTeX}
+    {knitr, ggplot2, dplyr, R Markdown}
+    {Tight deadline; need for official government formatting; collaboration with multiple stakeholders; data validation requirements}
+    {Co-edited the official report on Ireland's annual statistics. Developed automated report generation pipeline and created reusable templates for future reports.}
+
+\resumeDetailedProject
+    {Historical Weather Data Processing}
+    {2020}
+    {R, Python}
+    {Pandas, regular expressions, OCR (Tesseract)}
+    {250+ year old handwritten records; inconsistent data formats; character recognition challenges; historical date formats}
+    {Developed specifications for the automatic reading of monthly meteorological records from over 250 years ago. Implemented prototype OCR pipeline and data validation rules.}
+
+\resumeProjectListEnd
+
+\resumeSubHeadingListEnd
+
+
+\vspace{-5mm}
+
+%-----------EDUCATION-----------------
+\section{Education}
+\resumeSubHeadingListStart
+\vspace{0.75mm}
+
+
+\resumeSubheading{ENSAI}{Rennes, France}{Engineering Degree (MSc.)}{2018 -- 2021}
+\resumeProjectListStart
+\resumeProjectItem{Computer Science specialization - Big Data - optimization - economics (micro \& macro) - class delegate}
+\resumeProjectListEnd
+
+\resumeSubheading{Lyc\'ee Fran\c{c}ais Premier}{Fontainebleau, France}{Preparatory Classes for Grandes \'Ecoles}{2015 -- 2018}
+\resumeProjectListStart
+\resumeProjectItem{\textit{MPSI -- MP}: Mathematics - Physics - Engineering Sciences - Computer Science specialization - class delegate}
+\resumeProjectListEnd
+
+\resumeSubHeadingListEnd
+
+
+\vspace{-4mm}
+
+%-----------TECHNICAL SKILLS + LANGUAGES -----------------
+\begin{minipage}[t]{0.65\linewidth}
+    \section{Technical Skills}
+    \resumeSubHeadingListStart
+    \resumeSubItem{Programming}{Python (advanced), Java, JavaScript/TypeScript, R, Bash, Go}
+    \resumeSubItem{Infrastructure}{Docker, Kubernetes, Helm, CI/CD (GitLab, GitHub Actions), Terraform}
+    \resumeSubItem{Databases}{PostgreSQL, DuckDB, MySQL, MongoDB}
+    \resumeSubItem{Cloud Platforms}{Google Cloud Platform (GCP), Amazon Web Services (AWS)}
+    \resumeSubItem{Data Engineering}{Apache Airflow, Pandas, NumPy, Apache Spark}
+    \resumeSubItem{ML/AI}{scikit-learn, TensorFlow, Transformers, HuggingFace, LLM fine-tuning}
+    \resumeSubItem{Monitoring}{Prometheus, Grafana, ELK Stack, Datadog}
+    \resumeSubItem{DevOps Tools}{Ansible, Vault, ArgoCD, Jenkins}
+    \resumeSubHeadingListEnd
+    \end{minipage}
+\hfill
+\begin{minipage}[t]{0.3\linewidth}
+    \section{Languages}
+    \resumeSubHeadingListStart
+    \resumeSubItem{French}{Native}
+    \resumeSubItem{English}{Bilingual}
+    \resumeSubItem{Spanish}{Fluent}
+    \resumeSubHeadingListEnd
+\end{minipage}
+
+
+%\vspace{0.5mm}
+
+%-----------PROJECTS-----------------
+\section{Personal Projects and Interests}
+\vspace{0.5mm}
+\begin{minipage}[t]{0.9865\textwidth}
+\resumeSubHeadingListStart
+
+\resumeDetailedProject
+    {HabitatCalc}
+    {2022-Present}
+    {JavaScript, TypeScript, HTML/CSS}
+    {React, Chart.js, Bootstrap, GitHub Pages}
+    {Complex financial calculations; handling edge cases; responsive design for mobile; user input validation}
+    {Real Estate Web Application: Optimization between renting and buying a property with real parameters. \href{https://odysseu.github.io/HabitatCalc/}{\textit{HabitatCalc}}}.
+
+\resumeDetailedProject
+    {TrancheMaster}
+    {2022-Present}
+    {JavaScript, TypeScript, HTML/CSS}
+    {React, D3.js, GitHub Pages}
+    {Complex tax bracket calculations; handling progressive tax rates; visualization challenges; edge cases in tax law}
+    {Tax Web Application: Understanding marginal tax brackets on income and tax rates. \href{https://odysseu.github.io/TrancheMaster/}{\textit{TrancheMaster}}}.
+
+  \resumeSubItem{Conferences and Seminars}{\href{https://www.numerique.gouv.fr/agenda/etat-dans-le-nuage-2026/}{\textit{L'Etat dans le nuage 2026}}, INSEE and Public Statistical Services Webinars 2024 to 2026, AI Salon 2023, KubeCon 2023, DevFest 2022 \& 2023, VivaTech 2022}
+  \resumeSubItem{Sports}{Triathlon, volleyball, alpine skiing, bouldering}
+  \resumeSubItem{Music}{Piano (4 years), drums (10 years)}
+\resumeSubHeadingListEnd
+\end{minipage}
+
+
+%-------------------------------------------
+\end{document}
