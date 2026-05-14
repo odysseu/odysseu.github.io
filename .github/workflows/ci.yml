@@ -4,14 +4,14 @@ on:
   push:
     branches: [ main ]
     paths:
-      - '*.tex'
+      - 'tex/*.tex'
       - '.github/workflows/ci.yml'
       - 'generate_cv_previews.py'
       - 'build_cv_website.sh'
   pull_request:
     branches: [ main ]
     paths:
-      - '*.tex'
+      - 'tex/*.tex'
 
 jobs:
   build:

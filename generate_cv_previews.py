@@ -18,8 +18,9 @@ def create_pdf_preview_gs(pdf_file, preview_file, width=200):
     
     print(f"  - Creating {preview_file} using ghostscript...")
     try:
-        # Use ghostscript to convert first page to PNG
-        temp_png = f"temp_{preview_file}"
+        # Extract basename for temporary file (remove directory path)
+        preview_basename = os.path.basename(preview_file)
+        temp_png = f"temp_{preview_basename}"
         subprocess.run([
             'gs', '-dNOPAUSE', '-dBATCH', '-sDEVICE=png16m', 
             '-r150', f'-sOutputFile={temp_png}', pdf_file
@@ -30,6 +31,8 @@ def create_pdf_preview_gs(pdf_file, preview_file, width=200):
         aspect_ratio = img.height / img.width
         new_height = int(width * aspect_ratio)
         img = img.resize((width, new_height), Image.LANCZOS)
+        # Ensure directory exists for preview file
+        os.makedirs(os.path.dirname(preview_file), exist_ok=True)
         img.save(preview_file, 'PNG')
         
         # Clean up temporary file
@@ -47,10 +50,10 @@ def main():
     
     # Define all CV versions: (pdf_file, preview_file, display_name)
     cv_versions = [
-        ('cv_english.pdf', 'english_simple_cv_preview.png', 'English Simple'),
-        ('cv_english.pdf', 'english_full_cv_preview.png', 'English Full'),
-        ('cv_french.pdf', 'french_simple_cv_preview.png', 'French Simple'),
-        ('cv_french.pdf', 'french_full_cv_preview.png', 'French Full'),
+        ('cv_english.pdf', 'previews/english_simple_cv_preview.png', 'English Simple'),
+        ('cv_english.pdf', 'previews/english_full_cv_preview.png', 'English Full'),
+        ('cv_french.pdf', 'previews/french_simple_cv_preview.png', 'French Simple'),
+        ('cv_french.pdf', 'previews/french_full_cv_preview.png', 'French Full'),
     ]
     
     # Create previews for all versions

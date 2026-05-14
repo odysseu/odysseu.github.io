@@ -27,10 +27,10 @@ echo "1. Compiling LaTeX files..."
 # Define all CV versions with their corresponding output PDF names
 # Format: tex_file:pdf_output
 declare -A CV_MAP=(
-    ["cv_english_full.tex"]="cv_english.pdf"
-    ["cv_english_simple.tex"]="cv_english_simple.pdf"
-    ["cv_french_full.tex"]="cv_french.pdf"
-    ["cv_french_simple.tex"]="cv_french_simple.pdf"
+    ["tex/cv_english_full.tex"]="cv_english.pdf"
+    ["tex/cv_english_simple.tex"]="cv_english_simple.pdf"
+    ["tex/cv_french_full.tex"]="cv_french.pdf"
+    ["tex/cv_french_simple.tex"]="cv_french_simple.pdf"
 )
 
 for tex_file in "${!CV_MAP[@]}"; do
@@ -72,7 +72,7 @@ python3 generate_cv_previews.py
 
 echo "=== Build Complete ==="
 echo "Generated files:"
-all_files=("cv_english_simple.pdf" "cv_english.pdf" "cv_french_simple.pdf" "cv_french.pdf" "english_simple_cv_preview.png" "english_full_cv_preview.png" "french_simple_cv_preview.png" "french_full_cv_preview.png")
+all_files=("cv_english_simple.pdf" "cv_english.pdf" "cv_french_simple.pdf" "cv_french.pdf" "previews/english_simple_cv_preview.png" "previews/english_full_cv_preview.png" "previews/french_simple_cv_preview.png" "previews/french_full_cv_preview.png")
 
 for file in "${all_files[@]}"; do
     if [ -f "$file" ]; then
