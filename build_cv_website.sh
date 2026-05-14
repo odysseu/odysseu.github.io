@@ -24,36 +24,50 @@ echo "=== Building CV Website ==="
 # Step 1: Compile LaTeX files to PDF
 echo "1. Compiling LaTeX files..."
 
-# Define all CV versions
-CV_VERSIONS=("english_simple" "english_full" "french_simple" "french_full")
+# Define all CV versions with their corresponding output PDF names
+# Format: tex_file:pdf_output
+declare -A CV_MAP=(
+    ["cv_english_full.tex"]="cv_english.pdf"
+    ["cv_english_simple.tex"]="cv_english_simple.pdf"
+    ["cv_french_full.tex"]="cv_french.pdf"
+    ["cv_french_simple.tex"]="cv_french_simple.pdf"
+)
 
-for version in "${CV_VERSIONS[@]}"; do
-    tex_file="cv_${version}.tex"
+for tex_file in "${!CV_MAP[@]}"; do
+    pdf_output="${CV_MAP[$tex_file]}"
+    
     if [ -f "$tex_file" ]; then
-        echo "  - Compiling ${tex_file}..."
+        echo "  - Compiling ${tex_file} -> ${pdf_output}..."
+        
+        # Remove existing PDF to ensure clean rebuild and overwrite
+        rm -f "$pdf_output"
+        echo "    Removed old ${pdf_output}"
+        
+        # Get base name for -jobname option
+        pdf_basename="$(basename "$pdf_output" .pdf)"
+        
         echo "    Running pdflatex (first pass)..."
-        if pdflatex -interaction=nonstopmode "$tex_file"; then
-            echo "    Running pdflatex (second pass for references)..."
-            if pdflatex -interaction=nonstopmode "$tex_file"; then
-                echo "  ✓ cv_${version}.pdf generated successfully"
-            else
-                echo "  ⚠ ${tex_file} second pass failed, but first pass succeeded"
-            fi
+        pdflatex -interaction=nonstopmode -jobname="$pdf_basename" "$tex_file" > /dev/null 2>&1
+        
+        echo "    Running pdflatex (second pass for references)..."
+        pdflatex -interaction=nonstopmode -jobname="$pdf_basename" "$tex_file" > /dev/null 2>&1
+        
+        if [ -f "$pdf_output" ]; then
+            echo "  ✓ ${pdf_output} generated successfully (old version was overwritten)"
         else
-            echo "  ✗ ${tex_file} compilation failed"
-            if [ -f "cv_${version}.pdf" ]; then
-                echo "  ℹ Using existing cv_${version}.pdf file"
-            else
-                echo "  ⚠ No cv_${version}.pdf available"
-            fi
+            echo "  ✗ ${tex_file} compilation failed - no PDF generated"
         fi
     else
         echo "  ⚠ ${tex_file} not found, skipping"
     fi
 done
 
-# Step 2: Generate preview images from PDFs
-echo "2. Generating preview images..."
+# Step 2: Clean up LaTeX temporary files
+echo "2. Cleaning up LaTeX temporary files..."
+rm -f *.aux *.log *.out *.toc *.lof *.lot
+
+# Step 3: Generate preview images from PDFs
+echo "3. Generating preview images..."
 python3 generate_cv_previews.py
 
 echo "=== Build Complete ==="

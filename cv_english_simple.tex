@@ -25,7 +25,7 @@
     urlcolor = {[rgb]{0,0,0}}
 }
 
-\newcommand\dunderline[3][-1pt]{{%
+\newcommand\dunderline[3][-1pt]{{\%
   \sbox0{#3}%
   \ooalign{\copy0\cr\rule[\dimexpr#1-#2\relax]{\wd0}{#2}}}}
 
@@ -47,7 +47,7 @@
 % Sections formatting
 \titleformat{\section}{
   \vspace{-1pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+}{}{0em}{}[\[\color{black}\titlerule \vspace{-5pt}]
 
 %-------------------------
 % Custom commands
@@ -111,10 +111,10 @@
       \hfill
       \begin{minipage}[c]{0.215\linewidth}
           \begin{tabular*}{\textwidth}{c@{\extracolsep{\fill}} l}
-              \href{mailto:uboucherie1@gmail.com}{\raisebox{-0.055\height}{\faEnvelope}} & \href{mailto:uboucherie1@gmail.com}{\small{uboucherie1@gmail.com}} \\
-              \href{https://github.com/odysseu}{\raisebox{-0.035\height}{\faGlobe}} & \href{https://odysseu.github.io/}{\small{odysseu.github.io}} \\
-              \href{https://github.com/odysseu}{\raisebox{-0.035\height}{\faGithub}} & \href{https://github.com/odysseu}{\small{odysseu}} \\
-              \href{https://www.linkedin.com/in/ulysse-boucherie-7a3b2b111/}{\raisebox{-0.0925\height}{\faLinkedinSquare}} & \href{https://www.linkedin.com/in/ulysse-boucherie-7a3b2b111/}{\small{in/ulysse.boucherie}} \\
+              \href{mailto:uboucherie1@gmail.com}{\raisebox{-0.055\height}{\faEnvelope}} & \href{mailto:uboucherie1@gmail.com}{\small{uboucherie1@gmail.com}} \\ 
+              \href{https://github.com/odysseu}{\raisebox{-0.035\height}{\faGlobe}} & \href{https://odysseu.github.io/}{\small{odysseu.github.io}} \\ 
+              \href{https://github.com/odysseu}{\raisebox{-0.035\height}{\faGithub}} & \href{https://github.com/odysseu}{\small{odysseu}} \\ 
+              \href{https://www.linkedin.com/in/ulysse-boucherie-7a3b2b111/}{\raisebox{-0.0925\height}{\faLinkedinSquare}} & \href{https://www.linkedin.com/in/ulysse-boucherie-7a3b2b111/}{\small{in/ulysse.boucherie}} \\ 
               {\raisebox{-0.0925\height}{\faHome}} & \small{Fontainebleau, France}
           \end{tabular*}
       \end{minipage}
@@ -145,7 +145,7 @@
 
 Responsible for publications on economic and financial crime
 \resumeProjectListStart
-\resumeProjectItem{Redesigned ETL processes for 20\plus agents, reducing the delay between data acquisition and production by over 80\%.}
+\resumeProjectItem{Redesigned ETL processes for 20\plus agents, reducing the delay between data acquisition and production by over 80\%. Implemented incremental processing, data validation frameworks, and automated alerting.}
 \resumeProjectItem{Implemented a culture of change with modern tools and methods for a diverse audience in terms of adaptability, technical skills, and ambition.}
 \resumeProjectItem{Developed internal and open-source tools for the industrialized publication of articles and content for the general public, reducing technical debt and dependencies.}
 \resumeProjectItem{Co-designed, developed, and deployed LLM models to cluster free-text survey responses (\textit{private - NDA}).}
@@ -156,8 +156,8 @@ Responsible for publications on economic and financial crime
 
 DevOps and support for INSEE's data science platform
 \resumeProjectListStart
-\resumeProjectItem{Co-developed and installed the Platform As A Service (\href{https://github.com/InseeFrLab/onyxia}{Onyxia}).}
-\resumeProjectItem{Developed and implemented a new cutting-edge technical stack (Docker, Helm, GitLab and GitHub pipelines, Grafana, Prometheus, Vault) and accelerated production deployment of services by 10x.}
+\resumeProjectItem{Co-developed and installed the Platform As A Service (\href{https://github.com/InseeFrLab/onyxia}{\textit{Onyxia}}).}
+\resumeProjectItem{Developed and implemented a new cutting-edge technical stack (Docker, Helm, GitLab and GitHub pipelines, Grafana, Prometheus, Vault, Ubuntu/Debian, S3) and accelerated production deployment of services by 10x.}
 \resumeProjectItem{Provided support to data scientists, from beginners to advanced, for integrating their services (notebooks, internal data visualization applications, IDEs: RStudio \& PyCharm).}
 \resumeProjectListEnd
 
@@ -165,7 +165,7 @@ DevOps and support for INSEE's data science platform
 
 System administrator for the internal data science platform
 \resumeProjectListStart
-\resumeProjectItem{Implemented components enabling 500+ INSEE data scientists to save up to 80\% of their time in deploying internal tools and studies.}
+\resumeProjectItem{Implemented components enabling 500\plus INSEE data scientists to save up to 80\% of their time in deploying internal tools and studies.}
 \resumeProjectItem{Set up monitoring and supervision of processes to manage shared physical resources (Windows Server). Optimized resource usage by 20\%.}
 \resumeProjectItem{Initiated projects to translate code to move away from a proprietary data analysis license that had been in place for 20 years.}
 \resumeProjectListEnd
@@ -198,7 +198,7 @@ Statistical Assistant
 \resumeProjectItem{Computer Science specialization - Big Data - optimization - economics (micro \& macro) - class delegate}
 \resumeProjectListEnd
 
-\resumeSubheading{Lycée François Premier}{Fontainebleau, France}{Preparatory Classes for Grandes Écoles}{2015 -- 2018}
+\resumeSubheading{Lyc\'ee Fran\c{c}ais Premier}{Fontainebleau, France}{Preparatory Classes for Grandes \'Ecoles}{2015 -- 2018}
 \resumeProjectListStart
 \resumeProjectItem{\textit{MPSI -- MP}: Mathematics - Physics - Engineering Sciences - Computer Science specialization - class delegate}
 \resumeProjectListEnd
@@ -214,8 +214,12 @@ Statistical Assistant
     \resumeSubHeadingListStart
     \resumeSubItem{Programming}{Python, Java, JavaScript, TypeScript, R, Bash, Go}
     \resumeSubItem{Infrastructure}{Docker, Kubernetes, Helm, CI/CD (GitLab, GitHub)}
-    \resumeSubItem{Databases}{PostgreSQL, DuckDB}
-    \resumeSubItem{Cloud Platforms}{Google Cloud Platform (GCP), Amazon Web Services (AWS)}
+    \resumeSubItem{Databases}{PostgreSQL, DuckDB, MySQL}
+    \resumeSubItem{Cloud}{S3, Google Cloud Platform (GCP), Amazon Web Services (AWS)}
+    \resumeSubItem{Systems}{Linux (Ubuntu/Debian), Windows Server}
+    \resumeSubItem{Data Engineering}{Apache Airflow, Pandas, NumPy, Dask}
+    \resumeSubItem{ML/AI}{scikit-learn, TensorFlow, Transformers, HuggingFace, MLflow}
+    \resumeSubItem{DevOps}{Terraform, Ansible, Vault, ArgoCD, GitHub Workflows}
     \resumeSubHeadingListEnd
     \end{minipage}
 \hfill
@@ -236,8 +240,8 @@ Statistical Assistant
 \vspace{0.5mm}
 \begin{minipage}[t]{0.9865\textwidth}
 \resumeSubHeadingListStart
-  \resumeSubItem{Real Estate Web Application}{Optimization between renting and buying a property with real parameters: \href{https://odysseu.github.io/HabitatCalc/}{\textit{HabitatCalc}}.}
-  \resumeSubItem{Tax Web Application}{Understanding marginal tax brackets on income and tax rates: \href{https://odysseu.github.io/TrancheMaster/}{\textit{TrancheMaster}}.}
+  \resumeSubItem{Real Estate Web Application}{Optimization between renting and buying a property with real parameters: \href{https://odysseu.github.io/HabitatCalc/}{\textit{HabitatCalc}}.} 
+  \resumeSubItem{Tax Web Application}{Understanding marginal tax brackets on income and tax rates: \href{https://odysseu.github.io/TrancheMaster/}{\textit{TrancheMaster}}.} 
   \resumeSubItem{Conferences and Seminars}{\href{https://www.numerique.gouv.fr/agenda/etat-dans-le-nuage-2026/}{\textit{L'Etat dans le nuage 2026}}, INSEE and Public Statistical Services Webinars 2024 to 2026, AI Salon 2023, KubeCon 2023, DevFest 2022 \& 2023, VivaTech 2022}
   \resumeSubItem{Sports}{Triathlon, volleyball, alpine skiing, bouldering}
   \resumeSubItem{Music}{Piano (4 years), drums (10 years)}

@@ -28,8 +28,8 @@
 }
 
 \newcommand\dunderline[3][-1pt]{{\%
-  \sbox0{#3}%
-  \ooalign{\copy0\cr\rule[\dimexpr#1-#2\relax]{\wd0}{#2}}}
+  \sbox0{#3}% 
+  \ooalign{\copy0\cr\rule[\dimexpr#1-#2\relax]{\wd0}{#2}}}}
 
 \pagestyle{fancy}
 \fancyhf{} 
@@ -49,7 +49,7 @@
 % Sections formatting
 \titleformat{\section}{
   \vspace{-1pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+}{}{0em}{}[\[\color{black}\titlerule \vspace{-5pt}]
 
 %-------------------------
 % Custom commands
@@ -126,10 +126,10 @@
       \hfill
       \begin{minipage}[c]{0.215\linewidth}
           \begin{tabular*}{\textwidth}{c@{\extracolsep{\fill}} l}
-              \href{mailto:uboucherie1@gmail.com}{\raisebox{-0.055\height}{\faEnvelope}} & \href{mailto:uboucherie1@gmail.com}{\small{uboucherie1@gmail.com}} \\
-              \href{https://github.com/odysseu}{\raisebox{-0.035\height}{\faGlobe}} & \href{https://odysseu.github.io/}{\small{odysseu.github.io}} \\
-              \href{https://github.com/odysseu}{\raisebox{-0.035\height}{\faGithub}} & \href{https://github.com/odysseu}{\small{odysseu}} \\
-              \href{https://www.linkedin.com/in/ulysse-boucherie-7a3b2b111/}{\raisebox{-0.0925\height}{\faLinkedinSquare}} & \href{https://www.linkedin.com/in/ulysse-boucherie-7a3b2b111/}{\small{in/ulysse.boucherie}} \\
+              \href{mailto:uboucherie1@gmail.com}{\raisebox{-0.055\height}{\faEnvelope}} & \href{mailto:uboucherie1@gmail.com}{\small{uboucherie1@gmail.com}} \\ 
+              \href{https://github.com/odysseu}{\raisebox{-0.035\height}{\faGlobe}} & \href{https://odysseu.github.io/}{\small{odysseu.github.io}} \\ 
+              \href{https://github.com/odysseu}{\raisebox{-0.035\height}{\faGithub}} & \href{https://github.com/odysseu}{\small{odysseu}} \\ 
+              \href{https://www.linkedin.com/in/ulysse-boucherie-7a3b2b111/}{\raisebox{-0.0925\height}{\faLinkedinSquare}} & \href{https://www.linkedin.com/in/ulysse-boucherie-7a3b2b111/}{\small{in/ulysse.boucherie}} \\ 
               {\raisebox{-0.0925\height}{\faHome}} & \small{Fontainebleau, France}
           \end{tabular*}
       \end{minipage}
@@ -157,6 +157,8 @@
 
 
 \resumeSubheading{Ministry of the Interior}{Paris, France}{Data Scientist and IT Technical Referent}{2024 - Present}
+
+Data Engineering support, processing, securing, and automating data. Large-scale sensitive data exploitation in a secured environment (GDPR). Advanced and optimized SQL (PostgreSQL, DuckDB), Python (pandas, numpy, pyarrow, SQLAlchemy). Construction and improvement of data pipelines (ETL) with Apache Airflow. Data governance and quality control. Production of indicators for public decision-making support.
 
 Responsible for publications on economic and financial crime
 \resumeProjectListStart
@@ -197,13 +199,15 @@ Responsible for publications on economic and financial crime
     {Economic Crime Studies}
     {2024-Present}
     {Python, R, SQL}
-    {Pandas, ggplot2, dplyr, PostgreSQL}
+    {Pandas, ggplot2, dplyr, PostgreSQL, DuckDB}
     {Data from multiple sources (Police Nationale, Gendarmerie) with different formats; sensitive data handling; need for reproducible analysis}
     {Wrote studies on economic and financial crime using data from the Police Nationale and Gendarmerie. Developed standardized analysis pipelines and visualization templates.}
 
 \resumeProjectListEnd
 
 \resumeSubheading{INSEE}{Nantes, France}{DevOps Engineer}{2021 -- 2024}
+
+Support and exploitation of critical information systems. POC with advanced Python technologies (pandas, numpy, Dask, scikit-learn, XGBoost, TensorFlow/PyTorch, MLflow, Polars, pyarrow, Modin, Ray, FastAPI). Support and maintenance of critical information systems: complete stack in containerized environment (Docker, Kubernetes, Helm) with low-level layers (Linux Ubuntu/Debian, TCP/IP networking, S3 storage) and high-level (PostgreSQL, Redis, microservices). Analysis and resolution of internal and open-source application incidents. Continuous improvement of SI flows and processes with observability (Prometheus, Grafana, ELK, OpenTelemetry).
 
 DevOps and support for INSEE's data science platform
 \resumeProjectListStart
@@ -212,15 +216,15 @@ DevOps and support for INSEE's data science platform
     {Onyxia Platform Development}
     {2021-2024}
     {Go, Python, TypeScript, YAML}
-    {Kubernetes, Helm, Docker, GitLab CI/CD, ArgoCD, Vault, Prometheus, Grafana}
+    {Kubernetes, Helm, Docker, GitLab CI/CD, GitHub Actions, ArgoCD, Vault, Prometheus, Grafana}
     {Complex multi-tenant architecture; security requirements for government data; integration with legacy systems; scalability needs}
-    {Co-developed and installed the Platform As A Service (\href{https://github.com/InseeFrLab/onyxia}{Onyxia}). Designed microservices architecture, implemented authentication/authorization, and deployed monitoring stack.}
+    {Co-developed and installed the Platform As A Service (\href{https://github.com/InseeFrLab/onyxia}{\textit{Onyxia}}). Designed microservices architecture, implemented authentication/authorization, and deployed monitoring stack.}
 
 \resumeDetailedProject
     {Modern Stack Implementation}
     {2021-2024}
     {Bash, Python, YAML}
-    {Docker, Helm, GitLab pipelines, GitHub Actions, Grafana, Prometheus, Vault, Terraform}
+    {Docker, Helm, GitLab pipelines, GitHub Actions, Grafana, Prometheus, Vault, Terraform, Ubuntu/Debian, S3}
     {Resistance to change from existing team; need to maintain old systems during transition; training requirements for 500+ users}
     {Developed and implemented a new cutting-edge technical stack. Created migration guides, automated deployment processes, and reduced deployment time from weeks to hours (10x acceleration).}
 
@@ -245,7 +249,7 @@ System administrator for the internal data science platform
     {PowerShell, Batch, Python}
     {Windows Server, Active Directory, IIS, SQL Server}
     {Legacy infrastructure with limited resources; security constraints; need for high availability; complex user management}
-    {Implemented components enabling 500+ INSEE data scientists to save up to 80\% of their time in deploying internal tools and studies. Automated deployment scripts and created self-service portals.}
+    {Implemented components enabling 500\plus INSEE data scientists to save up to 80\% of their time in deploying internal tools and studies. Automated deployment scripts and created self-service portals.}
 
 \resumeDetailedProject
     {Resource Monitoring System}
@@ -319,12 +323,14 @@ Statistical Assistant
     \resumeSubHeadingListStart
     \resumeSubItem{Programming}{Python (advanced), Java, JavaScript/TypeScript, R, Bash, Go}
     \resumeSubItem{Infrastructure}{Docker, Kubernetes, Helm, CI/CD (GitLab, GitHub Actions), Terraform}
-    \resumeSubItem{Databases}{PostgreSQL, DuckDB, MySQL, MongoDB}
+    \resumeSubItem{Databases}{PostgreSQL, DuckDB, MySQL}
+    \resumeSubItem{Storage}{S3}
+    \resumeSubItem{Systems}{Linux (Ubuntu/Debian), Windows Server}
     \resumeSubItem{Cloud Platforms}{Google Cloud Platform (GCP), Amazon Web Services (AWS)}
-    \resumeSubItem{Data Engineering}{Apache Airflow, Pandas, NumPy, Apache Spark}
-    \resumeSubItem{ML/AI}{scikit-learn, TensorFlow, Transformers, HuggingFace, LLM fine-tuning}
-    \resumeSubItem{Monitoring}{Prometheus, Grafana, ELK Stack, Datadog}
-    \resumeSubItem{DevOps Tools}{Ansible, Vault, ArgoCD, Jenkins}
+    \resumeSubItem{Data Engineering}{Apache Airflow, Pandas, NumPy, Apache Spark, Dask, Polars, pyarrow, Modin, Ray}
+    \resumeSubItem{ML/AI}{scikit-learn, TensorFlow, Transformers, HuggingFace, LLM fine-tuning, MLflow}
+    \resumeSubItem{Monitoring}{Prometheus, Grafana, ELK Stack, OpenTelemetry, Datadog}
+    \resumeSubItem{DevOps Tools}{Ansible, Vault, ArgoCD, GitHub Workflows}
     \resumeSubHeadingListEnd
     \end{minipage}
 \hfill
@@ -352,7 +358,7 @@ Statistical Assistant
     {JavaScript, TypeScript, HTML/CSS}
     {React, Chart.js, Bootstrap, GitHub Pages}
     {Complex financial calculations; handling edge cases; responsive design for mobile; user input validation}
-    {Real Estate Web Application: Optimization between renting and buying a property with real parameters. \href{https://odysseu.github.io/HabitatCalc/}{\textit{HabitatCalc}}}.
+    {Real Estate Web Application: Optimization between renting and buying a property with real parameters. \href{https://odysseu.github.io/HabitatCalc/}{\textit{HabitatCalc}}.} 
 
 \resumeDetailedProject
     {TrancheMaster}
@@ -360,7 +366,7 @@ Statistical Assistant
     {JavaScript, TypeScript, HTML/CSS}
     {React, D3.js, GitHub Pages}
     {Complex tax bracket calculations; handling progressive tax rates; visualization challenges; edge cases in tax law}
-    {Tax Web Application: Understanding marginal tax brackets on income and tax rates. \href{https://odysseu.github.io/TrancheMaster/}{\textit{TrancheMaster}}}.
+    {Tax Web Application: Understanding marginal tax brackets on income and tax rates. \href{https://odysseu.github.io/TrancheMaster/}{\textit{TrancheMaster}}.} 
 
   \resumeSubItem{Conferences and Seminars}{\href{https://www.numerique.gouv.fr/agenda/etat-dans-le-nuage-2026/}{\textit{L'Etat dans le nuage 2026}}, INSEE and Public Statistical Services Webinars 2024 to 2026, AI Salon 2023, KubeCon 2023, DevFest 2022 \& 2023, VivaTech 2022}
   \resumeSubItem{Sports}{Triathlon, volleyball, alpine skiing, bouldering}

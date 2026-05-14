@@ -31,63 +31,11 @@ jobs:
           apt-get install -y ghostscript python3 python3-pip git
           pip3 install Pillow
 
-      - name: Compile LaTeX files (Simple versions)
+      - name: Build CV website (compiles PDFs, generates previews)
         run: |
-          echo "Compiling simple versions..."
-          for lang in english french; do
-            if [ -f "cv_${lang}_simple.tex" ]; then
-              pdflatex -interaction=nonstopmode "cv_${lang}_simple.tex" || true
-              pdflatex -interaction=nonstopmode "cv_${lang}_simple.tex" || true
-            fi
-          done
-
-      - name: Compile LaTeX files (Full versions)
-        run: |
-          echo "Compiling full versions..."
-          for lang in english french; do
-            if [ -f "cv_${lang}_full.tex" ]; then
-              pdflatex -interaction=nonstopmode "cv_${lang}_full.tex" || true
-              pdflatex -interaction=nonstopmode "cv_${lang}_full.tex" || true
-            fi
-          done
-
-      - name: Compile LaTeX files (Backwards compatibility)
-        run: |
-          echo "Compiling backwards compatibility versions..."
-          for lang in english french; do
-            if [ -f "cv_${lang}.tex" ]; then
-              pdflatex -interaction=nonstopmode "cv_${lang}.tex" || true
-              pdflatex -interaction=nonstopmode "cv_${lang}.tex" || true
-            fi
-          done
-
-      - name: Generate preview images
-        run: |
-          echo "Generating preview images..."
-          python3 generate_cv_previews.py
-
-      - name: Update index.html
-        run: |
-          echo "Updating index.html..."
+          echo "Building CV website..."
           chmod +x build_cv_website.sh
           ./build_cv_website.sh
-
-      - name: Commit and push changes
-        if: github.ref == 'refs/heads/main'
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          
-          # Add all generated files
-          git add -A
-          
-          # Check if there are changes
-          if ! git diff --cached --quiet; then
-            git commit -m "Auto-build CV PDFs and previews [skip ci]"
-            git push
-          else
-            echo "No changes to commit"
-          fi
 
       - name: Upload artifacts
         uses: actions/upload-pages-artifact@v5

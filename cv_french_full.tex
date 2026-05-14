@@ -21,7 +21,7 @@
 \usepackage{adjustbox}
 \usepackage{longtable}
 \usepackage{array}
-\usepackage{babel}
+\usepackage[french]{babel}
 \definecolor{myBlue}{rgb}{0,0,0.55}
 
 
@@ -30,8 +30,8 @@
 }
 
 \newcommand\dunderline[3][-1pt]{{\%
-  \sbox0{#3}%
-  \ooalign{\copy0\cr\rule[\dimexpr#1-#2\relax]{\wd0}{#2}}}
+  \sbox0{#3}% 
+  \ooalign{\copy0\cr\rule[\dimexpr#1-#2\relax]{\wd0}{#2}}}}
 
 \pagestyle{fancy}
 \fancyhf{} 
@@ -51,7 +51,7 @@
 % Sections formatting
 \titleformat{\section}{
   \vspace{-1pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+}{}{0em}{}[\[\color{black}\titlerule \vspace{-5pt}]
 
 %-------------------------
 % Custom commands
@@ -128,10 +128,10 @@
       \hfill
       \begin{minipage}[c]{0.215\linewidth}
           \begin{tabular*}{\textwidth}{c@{\extracolsep{\fill}} l}
-              \href{mailto:uboucherie1@gmail.com}{\raisebox{-0.055\height}{\faEnvelope}} & \href{mailto:uboucherie1@gmail.com}{\small{uboucherie1@gmail.com}} \\
-              \href{https://github.com/odysseu}{\raisebox{-0.035\height}{\faGlobe}} & \href{https://odysseu.github.io/}{\small{odysseu.github.io}} \\
-              \href{https://github.com/odysseu}{\raisebox{-0.035\height}{\faGithub}} & \href{https://github.com/odysseu}{\small{odysseu}} \\
-              \href{https://www.linkedin.com/in/ulysse-boucherie-7a3b2b111/}{\raisebox{-0.0925\height}{\faLinkedinSquare}} & \href{https://www.linkedin.com/in/ulysse-boucherie-7a3b2b111/}{\small{in/ulysse.boucherie}} \\
+              \href{mailto:uboucherie1@gmail.com}{\raisebox{-0.055\height}{\faEnvelope}} & \href{mailto:uboucherie1@gmail.com}{\small{uboucherie1@gmail.com}} \\ 
+              \href{https://github.com/odysseu}{\raisebox{-0.035\height}{\faGlobe}} & \href{https://odysseu.github.io/}{\small{odysseu.github.io}} \\ 
+              \href{https://github.com/odysseu}{\raisebox{-0.035\height}{\faGithub}} & \href{https://github.com/odysseu}{\small{odysseu}} \\ 
+              \href{https://www.linkedin.com/in/ulysse-boucherie-7a3b2b111/}{\raisebox{-0.0925\height}{\faLinkedinSquare}} & \href{https://www.linkedin.com/in/ulysse-boucherie-7a3b2b111/}{\small{in/ulysse.boucherie}} \\ 
               {\raisebox{-0.0925\height}{\faHome}} & \small{Fontainebleau, France}
           \end{tabular*}
       \end{minipage}
@@ -159,6 +159,8 @@
 
 
 \resumeSubheading{Minist\`ere de la s\'ecurit\'e int\'erieur}{Paris, France}{Data Scientist et r\'ef\'erent technique informatique}{2024 - aujourd'hui}
+
+Aide \`a la Data Engineering, traitement, fiabilisation et automatisation de donn\'ees. Exploitation de donn\'ees sensibles \`a grande \'echelle en environnement s\'ecuris\'e (RGPD). SQL avanc\'e et optimis\'e (PostgreSQL, DuckDB), Python (pandas, numpy, pyarrow, SQLAlchemy). Construction et am\'elioration de flux de donn\'ees (ETL) avec Apache Airflow. Gouvernance et contr\^ole qualit\'e des donn\'ees. Production d'indicateurs d'aide \`a la d\'ecision publique.
 
 Responsable des publications sur la d\'elinquance \'economique et financi\`ere
 \resumeProjectListStart
@@ -199,7 +201,7 @@ Responsable des publications sur la d\'elinquance \'economique et financi\`ere
     {\'Etudes sur la d\'elinquance \'economique et financi\`ere}
     {2024-Pr\'esent}
     {Python, R, SQL}
-    {Pandas, ggplot2, dplyr, PostgreSQL}
+    {Pandas, ggplot2, dplyr, PostgreSQL, DuckDB}
     {Donn\'ees provenant de multiples sources (Police Nationale, Gendarmerie) avec diff\'erents formats ; traitement de donn\'ees sensibles ; besoin d'analyses reproductibles}
     {R\'edaction d'\'etudes sur la d\'elinquance \'economique et financi\`ere en utilisant les donn\'ees de la Police Nationale et de la Gendarmerie. D\'eveloppement de pipelines d'analyse standardis\'es et de mod\`eles de visualisation.}
 
@@ -207,14 +209,16 @@ Responsable des publications sur la d\'elinquance \'economique et financi\`ere
 
 \resumeSubheading{INSEE}{Nantes, France}{Ing\'enieur DevOps}{2021 -- 2024}
 
-\textit{DevOps} et support de la plateforme de datascience de l'INSEE
+Support et exploitation de syst\`emes d'information critiques. POC avec technologies avanc\'ees de Python (pandas, numpy, Dask, scikit-learn, XGBoost, TensorFlow/PyTorch, MLflow, Polars, pyarrow, Modin, Ray, FastAPI). Support et maintien de syst\`emes d'information critiques : stack compl\`ete en environnement conteneuris\'e (Docker, Kubernetes, Helm) avec couches basses (Linux Ubuntu/Debian, r\'eseaux TCP/IP, stockage S3) et hautes (PostgreSQL, Redis, microservices). Analyse et r\'esolution d'incidents applicatifs internes et open source. Am\'elioration continue des flux et processus SI avec observabilit\'e (Prometheus, Grafana, ELK, OpenTelemetry).
+
+DevOps et support de la plateforme de datascience de l'INSEE
 \resumeProjectListStart
 
 \resumeDetailedProject
     {D\'eveloppement de la plateforme Onyxia}
     {2021-2024}
     {Go, Python, TypeScript, YAML}
-    {Kubernetes, Helm, Docker, GitLab CI/CD, ArgoCD, Vault, Prometheus, Grafana}
+    {Kubernetes, Helm, Docker, GitLab CI/CD, GitHub Actions, ArgoCD, Vault, Prometheus, Grafana}
     {Architecture multi-locataires complexe ; exigences de s\'ecurit\'e pour les donn\'ees gouvernementales ; int\'egration avec les syst\`emes h\'erit\'es ; besoins de scalabilit\'e}
     {Co-d\'eveloppement et installation d'une \textit{Plateforme As A Service} (\href{https://github.com/InseeFrLab/onyxia}{\textit{Onyxia}}). Conception d'architecture microservices, mise en \oe uvre de l'authentification/autorisation, et d\'eploiement de la stack de monitoring.}
 
@@ -222,7 +226,7 @@ Responsable des publications sur la d\'elinquance \'economique et financi\`ere
     {Impl\'ementation d'une stack technique moderne}
     {2021-2024}
     {Bash, Python, YAML}
-    {Docker, Helm, Pipelines GitLab, GitHub Actions, Grafana, Prometheus, Vault, Terraform}
+    {Docker, Helm, Pipelines GitLab, GitHub Actions, Grafana, Prometheus, Vault, Terraform, Ubuntu/Debian, S3}
     {R\'esistance au changement de la part de l'\'equipe existante ; n\'ecessit\'e de maintenir les anciens syst\`emes pendant la transition ; besoins de formation pour 500+ utilisateurs}
     {D\'eveloppement et remplacement de la stack technique compl\`ete et neuve. Cr\'eation de guides de migration, automatisation des processus de d\'eploiement et r\'eduction du temps de d\'eploiement de plusieurs semaines \`a quelques heures (acc\'el\'eration par 10).}
 
@@ -277,7 +281,7 @@ Assistant Statisticien
     {R, LaTeX}
     {knitr, ggplot2, dplyr, R Markdown}
     {D\'elai serr\'e ; besoin de mise en forme officielle du gouvernement ; collaboration avec plusieurs parties prenantes ; exigences de validation des donn\'ees}
-    {Co-\'edition du rapport officiel sur les statistiques annuelles de l'Irlande. D\'eveloppement de pipeline de g\'en\'eration de rapports automatis\'es et cr\'eation de mod\`eles réutilisables pour les rapports futurs.}
+    {Co-\'edition du rapport officiel sur les statistiques annuelles de l'Irlande. D\'eveloppement de pipeline de g\'en\'eration de rapports automatis\'es et cr\'eation de mod\`eles r\'eutilisables pour les rapports futurs.}
 
 \resumeDetailedProject
     {Traitement des donn\'ees m\'et\'eorologiques historiques}
@@ -321,12 +325,14 @@ Assistant Statisticien
     \resumeSubHeadingListStart
     \resumeSubItem{Programmation}{Python (avanc\'e), Java, JavaScript/TypeScript, R, Bash, Go}
     \resumeSubItem{Infrastructure}{Docker, Kubernetes, Helm, CI/CD (GitLab, GitHub Actions), Terraform}
-    \resumeSubItem{Bases de donn\'ees}{PostgreSQL, DuckDB, MySQL, MongoDB}
+    \resumeSubItem{Bases de donn\'ees}{PostgreSQL, DuckDB, MySQL}
+    \resumeSubItem{Stockage}{S3}
+    \resumeSubItem{Syst\`emes}{Linux (Ubuntu/Debian), Windows Server}
     \resumeSubItem{Plateformes Cloud}{Google Cloud Platform (GCP), Amazon Web Services (AWS)}
-    \resumeSubItem{Ing\'enierie des donn\'ees}{Apache Airflow, Pandas, NumPy, Apache Spark}
-    \resumeSubItem{ML/IA}{scikit-learn, TensorFlow, Transformers, HuggingFace, Fine-tuning de LLM}
-    \resumeSubItem{Monitoring}{Prometheus, Grafana, Stack ELK, Datadog}
-    \resumeSubItem{Outils DevOps}{Ansible, Vault, ArgoCD, Jenkins}
+    \resumeSubItem{Ing\'enierie des donn\'ees}{Apache Airflow, Pandas, NumPy, Apache Spark, Dask, Polars, pyarrow, Modin, Ray}
+    \resumeSubItem{ML/IA}{scikit-learn, TensorFlow, Transformers, HuggingFace, Fine-tuning de LLM, MLflow}
+    \resumeSubItem{Monitoring}{Prometheus, Grafana, Stack ELK, OpenTelemetry, Datadog}
+    \resumeSubItem{Outils DevOps}{Ansible, Vault, ArgoCD, GitHub Workflows}
     \resumeSubHeadingListEnd
     \end{minipage}
 \hfill
@@ -354,7 +360,7 @@ Assistant Statisticien
     {JavaScript, TypeScript, HTML/CSS}
     {React, Chart.js, Bootstrap, GitHub Pages}
     {Calculs financiers complexes ; gestion des cas particuliers ; design responsive pour mobile ; validation des entr\'ees utilisateur}
-    {Application immobili\`ere : Optimisation entre location et achat d'un bien immobilier avec des param\`etres r\'eels. \href{https://odysseu.github.io/HabitatCalc/}{\textit{HabitatCalc}}}.
+    {Application immobili\`ere : Optimisation entre location et achat d'un bien immobilier avec des param\`etres r\'eels. \href{https://odysseu.github.io/HabitatCalc/}{\textit{HabitatCalc}}.} 
 
 \resumeDetailedProject
     {TrancheMaster}
@@ -362,7 +368,7 @@ Assistant Statisticien
     {JavaScript, TypeScript, HTML/CSS}
     {React, D3.js, GitHub Pages}
     {Calculs complexes de tranches d'imposition ; gestion des taux progressifs ; d\'efis de visualisation ; cas particuliers de la loi fiscale}
-    {Application fiscale : Compr\'ehension des tranches marginales d'imposition sur le revenu et le taux d'imposition. \href{https://odysseu.github.io/TrancheMaster/}{\textit{TrancheMaster}}}.
+    {Application fiscale : Compr\'ehension des tranches marginales d'imposition sur le revenu et le taux d'imposition. \href{https://odysseu.github.io/TrancheMaster/}{\textit{TrancheMaster}}.} 
 
   \resumeSubItem{Veille et s\'eminaires}{\href{https://www.numerique.gouv.fr/agenda/etat-dans-le-nuage-2026/}{\textit{L'Etat dans le nuage 2026}}, Webinaires INSEE et Services Statistique Publique 2024 \`a 2026, Salon de l'IA 2023, KubeCon 2023, DevFest 2022 \& 2023, VivaTech 2022}
   \resumeSubItem{Sport}{Triathlon, volley-ball, ski alpin, escalade de blocs}
