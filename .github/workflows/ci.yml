@@ -16,8 +16,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: docker.io/texlive/texlive:latest-small
+    # container:
+    #   image: docker.io/texlive/texlive:latest-small
     
     steps:
       - name: Checkout repository
