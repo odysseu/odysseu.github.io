@@ -16,8 +16,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # container:
-    #   image: docker.io/texlive/texlive:latest-small
+    container: python:alpine3.22
     
     steps:
       - name: Checkout repository
