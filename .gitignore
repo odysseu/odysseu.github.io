@@ -3,5 +3,5 @@
 *.out
 
 # Generated directories
-pdf/
-previews/
+pdf/*.pdf
+previews/*.png
