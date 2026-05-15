@@ -43,14 +43,15 @@ for tex_file in "${!CV_MAP[@]}"; do
         rm -f "$pdf_output"
         echo "    Removed old ${pdf_output}"
         
-        # Get base name for -jobname option
+        # Get directory and base name for output
+        pdf_dir="$(dirname "$pdf_output")"
         pdf_basename="$(basename "$pdf_output" .pdf)"
         
         echo "    Running pdflatex (first pass)..."
-        pdflatex -interaction=nonstopmode -jobname="$pdf_basename" "$tex_file" > /dev/null 2>&1
+        pdflatex -interaction=nonstopmode -output-directory="$pdf_dir" -jobname="$pdf_basename" "$tex_file" > /dev/null 2>&1
         
         echo "    Running pdflatex (second pass for references)..."
-        pdflatex -interaction=nonstopmode -jobname="$pdf_basename" "$tex_file" > /dev/null 2>&1
+        pdflatex -interaction=nonstopmode -output-directory="$pdf_dir" -jobname="$pdf_basename" "$tex_file" > /dev/null 2>&1
         
         if [ -f "$pdf_output" ]; then
             echo "  ✓ ${pdf_output} generated successfully (old version was overwritten)"
