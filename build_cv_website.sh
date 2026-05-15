@@ -20,6 +20,8 @@ else
 fi
 
 echo "=== Building CV Website ==="
+echo "Repository tree:"
+tree .
 
 # Step 1: Compile LaTeX files to PDF
 echo "1. Compiling LaTeX files..."
@@ -40,8 +42,13 @@ for tex_file in "${!CV_MAP[@]}"; do
         echo "  - Compiling ${tex_file} -> ${pdf_output}..."
         
         # Remove existing PDF to ensure clean rebuild and overwrite
-        rm -f "$pdf_output"
-        echo "    Removed old ${pdf_output}"
+        if [ -f "$pdf_output" ]; then
+            echo "    ${pdf_output} exists - will be overwritten"
+            rm -f "$pdf_output"
+            echo "    Removed old ${pdf_output}"
+        else
+            echo "    ${pdf_output} does not exist - will be created"
+        fi
         
         # Get directory and base name for output
         pdf_dir="$(dirname "$pdf_output")"
@@ -57,6 +64,8 @@ for tex_file in "${!CV_MAP[@]}"; do
             echo "  ✓ ${pdf_output} generated successfully (old version was overwritten)"
         else
             echo "  ✗ ${tex_file} compilation failed - no PDF generated"
+            tree .
+            exit 1
         fi
     else
         echo "  ⚠ ${tex_file} not found, skipping"
