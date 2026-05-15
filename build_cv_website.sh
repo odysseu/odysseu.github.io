@@ -92,6 +92,3 @@ for file in "${all_files[@]}"; do
         echo "  ⚠ $file (missing)"
     fi
 done
-
-echo ""
-echo "PDFs and preview images generated. Make sure index.html exists and references the preview images."
