@@ -42,10 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
 function downloadCV(version) {
     const link = document.createElement('a');
     const mappings = {
-        'english_simple': { href: 'cv_english_simple.pdf', name: 'Ulysse_Boucherie_CV_English_Simple.pdf' },
-        'english_full': { href: 'cv_english.pdf', name: 'Ulysse_Boucherie_CV_English_Full.pdf' },
-        'french_simple': { href: 'cv_french_simple.pdf', name: 'Ulysse_Boucherie_CV_French_Simple.pdf' },
-        'french_full': { href: 'cv_french.pdf', name: 'Ulysse_Boucherie_CV_French_Full.pdf' }
+        'english_simple': { href: 'pdf/cv_english_simple.pdf', name: 'Ulysse_Boucherie_CV_English_Simple.pdf' },
+        'english_full': { href: 'pdf/cv_english.pdf', name: 'Ulysse_Boucherie_CV_English_Full.pdf' },
+        'french_simple': { href: 'pdf/cv_french_simple.pdf', name: 'Ulysse_Boucherie_CV_French_Simple.pdf' },
+        'french_full': { href: 'pdf/cv_french.pdf', name: 'Ulysse_Boucherie_CV_French_Full.pdf' }
     };
     
     const mapping = mappings[version];
