@@ -5,9 +5,14 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
@@ -17,29 +22,19 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y ghostscript python3 python3-pip git
+          sudo apt-get install -y ghostscript python3 python3-pip git texlive texlive-latex-extra texlive-fonts-extra texlive-lang-french
           pip3 install Pillow
 
-      - name: Build CV website (compiles PDFs, generates previews)
+      - name: Build CV website
         run: |
-          echo "Building CV website..."
           chmod +x build_cv_website.sh
           ./build_cv_website.sh
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
       - name: Upload artifacts
         uses: actions/upload-pages-artifact@v5
         with:
           path: .
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
