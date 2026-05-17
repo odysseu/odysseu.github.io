@@ -3,8 +3,6 @@ name: Build and Deploy CV
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
   build:
@@ -30,7 +28,6 @@ jobs:
 
   deploy:
     needs: build
-    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions:
       pages: write
