@@ -3,15 +3,8 @@ name: Build and Deploy CV
 on:
   push:
     branches: [ main ]
-    paths:
-      - 'tex/*.tex'
-      - '.github/workflows/ci.yml'
-      - 'generate_cv_previews.py'
-      - 'build_cv_website.sh'
   pull_request:
     branches: [ main ]
-    paths:
-      - 'tex/*.tex'
 
 jobs:
   build:
@@ -35,13 +28,9 @@ jobs:
           chmod +x build_cv_website.sh
           ./build_cv_website.sh
 
-      - name: Upload artifacts
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: .
-
   deploy:
     needs: build
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -50,6 +39,10 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Upload artifacts
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: .
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
