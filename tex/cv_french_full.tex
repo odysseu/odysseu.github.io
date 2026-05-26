@@ -48,28 +48,43 @@
 \raggedright
 \setlength{\tabcolsep}{0in}
 
+%==== Spacing Variables ====
+\newlength{\spaceSectionTitle}\setlength{\spaceSectionTitle}{-1pt}
+\newlength{\spaceSectionRule}\setlength{\spaceSectionRule}{-5pt}
+\newlength{\spaceItemEnd}\setlength{\spaceItemEnd}{-0.8pt}
+\newlength{\spaceJobV}\setlength{\spaceJobV}{2pt}
+\newlength{\spaceJobTech}\setlength{\spaceJobTech}{2pt}
+\newlength{\spaceSubItem}\setlength{\spaceSubItem}{-4pt}
+\newlength{\spaceItemListEnd}\setlength{\spaceItemListEnd}{-2pt}
+\newlength{\spaceProjectList}\setlength{\spaceProjectList}{3pt}
+\newlength{\spaceJobMission}\setlength{\spaceJobMission}{3pt}
+\newlength{\spaceExpSection}\setlength{\spaceExpSection}{1pt}
+\newlength{\spaceSecSep}\setlength{\spaceSecSep}{-3mm}
+\newlength{\spaceEduSec}\setlength{\spaceEduSec}{-4mm}
+\newlength{\spaceProjSec}\setlength{\spaceProjSec}{0.5mm}
+
 % Sections formatting
 \titleformat{\section}{
-  \vspace{-1pt}\scshape\raggedright\large
-}{}{0em}{}[\[\color{black}\titlerule \vspace{-5pt}]
+  \vspace{\spaceSectionTitle}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule\vspace{\spaceSectionRule}]
+\renewcommand{\labelitemi}{\textbullet}
 
 %-------------------------
 % Custom commands
 \newcommand{\resumeItem}[2]{
   \item\small{
-    \textbf{#1}{: #2\vspace{-0.8pt}}
+    \textbf{#1}{: #2\vspace{\spaceItemEnd}}
   }
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{1.15pt}
+  \vspace{3pt}
   \small
   \item
-    \begin{tabular*}{0.97\textwidth}{l @{\extracolsep{\fill}}r}
-      \normalsize{\textbf{#1}}   & #2 \\
-      \small{#3} & #4 \\
+    \begin{tabular*}{0.97\textwidth}[t]{l @{\extracolsep{\fill}}r}
+      \normalsize{\textbf{#1}} & #4 \\
+      \normalsize{\textit{#3}} & #2 \\
     \end{tabular*}
-  \vspace{1.5pt}
 }
 
 \def\Plus{\texttt{+\space}}
@@ -77,7 +92,7 @@
 % -------- ORIGINAL ------------
 
 \newcommand{\resumeSubItem}[2]{
-    \small{\resumeItem{#1}{#2}\vspace{-4pt}}
+    \small{\resumeItem{#1}{#2}\vspace{\spaceSubItem}}
 	
 }
 
@@ -85,12 +100,12 @@
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2pt}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{\spaceItemListEnd}}
 
 
 \newcommand{\resumeProjectListStart}{\begin{minipage}{0.97\textwidth} 
                                      \begin{itemize}[leftmargin=5mm]
-                                     \vspace{3pt}}
+                                     \vspace{\spaceProjectList}}
 \newcommand{\resumeProjectListEnd}{\end{itemize} 
                                    \end{minipage}}
 \newcommand{\resumeProjectItem}[1]{
@@ -104,10 +119,26 @@
         \begin{minipage}{0.95\textwidth}
             \small{\textbf{Langages :} #3 \\ 
             \textbf{Outils/Packages :} #4 \\ 
-            \textbf{Difficult\'es :} #5}
+            \textbf{Difficultés :} #5}
         \end{minipage}
     }
-    \vspace{3pt}
+    \vspace{\spaceProjectList}
+}
+
+% New commands for consolidated job display
+\newcommand{\resumeJobTechnologies}[1]{
+    \vspace{\spaceJobTech}
+    \small{\textbf{Technologies :} #1}\vspace{\spaceJobTech}
+}
+
+\newcommand{\resumeJobMission}[2]{
+    \item\small{
+        \textbf{#1} \\ 
+        \begin{minipage}{0.95\textwidth}
+            \small{#2}
+        \end{minipage}
+    }
+    \vspace{\spaceJobMission}
 }
 
 %-------------------------------------------
@@ -123,7 +154,7 @@
       \begin{minipage}[c]{0.6\linewidth}
           \huge \textbf{Ulysse \textsc{Boucherie}}
           \\
-          \emph{\large{Ing\'enieur DevOps \& Data Scientist (MSc.)}}
+          \emph{\large{Ingénieur DevOps \& Data Scientist (MSc.)}}
       \end{minipage}
       \hfill
       \begin{minipage}[c]{0.215\linewidth}
@@ -141,195 +172,108 @@
 
 %------------PROJET-----------------------
 
-\begin{center}
-\begin{minipage}{0.5\textwidth}
-    \centering
-    \large \textbf{Ing\'enieur DevOps \& data au service de la modernisation des Services Statistiques Publics}
-\end{minipage}
-\end{center}
+% \begin{center}
+% \begin{minipage}{0.5\textwidth}
+%     \centering
+%     \large \textbf{Ingénieur DevOps \& data au service de la modernisation des Services Statistiques Publics}
+% \end{minipage}
+% \end{center}
 
-\vspace{-5mm}
+% \vspace{\spaceSecSep}
 
 %-----------EXPERIENCE-----------------
 \section{Experience}
 
 \resumeSubHeadingListStart
 
-\vspace{0.75mm}
+\vspace{\spaceExpSection}
 
 
-\resumeSubheading{Minist\`ere de la s\'ecurit\'e int\'erieur}{Paris, France}{Data Scientist et r\'ef\'erent technique informatique}{2024 - aujourd'hui}
+\resumeSubheading{Ministère de la sécurité intèrieur}{Paris, France}{Data Scientist et référent technique informatique}{2024 - aujourd'hui}
 
-Aide \`a la Data Engineering, traitement, fiabilisation et automatisation de donn\'ees. Exploitation de donn\'ees sensibles \`a grande \'echelle en environnement s\'ecuris\'e (RGPD). SQL avanc\'e et optimis\'e (PostgreSQL, DuckDB), Python (pandas, numpy, pyarrow, SQLAlchemy). Construction et am\'elioration de flux de donn\'ees (ETL) avec Apache Airflow. Gouvernance et contr\^ole qualit\'e des donn\'ees. Production d'indicateurs d'aide \`a la d\'ecision publique.
+Aide à la Data Engineering, traitement, fiabilisation et automatisation de données. Exploitation de données sensibles à grande échelle en environnement sécurisé (RGPD). SQL avancé et optimisé (PostgreSQL, DuckDB), Python (pandas, numpy, pyarrow, SQLAlchemy). Construction et amélioration de flux de données (ETL) avec Apache Airflow. Gouvernance et contr\^ole qualité des données. Production d'indicateurs d'aide à la décision publique.
 
-Responsable des publications sur la d\'elinquance \'economique et financi\`ere
+Responsable des publications sur la délinquance économique et financière
+
+\resumeJobTechnologies{Python, R, SQL, Markdown, Bash, TypeScript, JavaScript, Apache Airflow, Pandas, NumPy, DuckDB, PostgreSQL, Git, GitHub, Docker, Jupyter, VS Code, React, FastAPI, GitHub Actions, Transformers, scikit-learn, Sentence-BERT, HuggingFace, ggplot2, dplyr}
+
 \resumeProjectListStart
-
-\resumeDetailedProject
-    {Refonte des processus ETL}
-    {2024-Pr\'esent}
-    {Python, SQL, R}
-    {Apache Airflow, Pandas, NumPy, DuckDB, PostgreSQL}
-    {Syst\`emes h\'erit\'es avec 20+ ans de dette technique ; R\'esistance au changement de la part des parties prenantes non techniques ; Probl\`emes de qualit\'e des donn\'ees dans les syst\`emes sources ; N\'ecessit\'e de maintenir la production pendant la migration}
-    {Refonte des processus ETL pour 20\Plus agents, permettant de r\'eduire de plus de 80\% le d\'elai entre les acquisitions de donn\'ees et la mise en production. Mise en place de traitement incr\'ementiel, de cadres de validation des donn\'ees et d'alertes automatis\'ees. Formation des membres de l'\'equipe aux nouveaux processus et outils.}
-
-\resumeDetailedProject
-    {Mise en place d'une culture du changement}
-    {2024-Pr\'esent}
-    {Python, Markdown, Bash}
-    {Git, GitHub, Docker, Jupyter, VS Code}
-    {Public h\'et\'erog\`ene avec des comp\'etences techniques vari\'ees (de Excel uniquement \`a Python avanc\'e) ; r\'esistance \`a l'adoption de nouveaux outils ; besoin de d\'emontrer une valeur imm\'ediate}
-    {Mise en place d'une culture du changement avec des outils et m\'ethodes de travail plus modernes. Cr\'eation de documentation, de mod\`eles et de kits de d\'emarrage. Organisation de sessions de formation et d'ateliers. D\'eveloppement d'outils internes pour r\'eduire la barri\`ere \`a l'entr\'ee pour les utilisateurs non techniques.}
-
-\resumeDetailedProject
-    {Outils open-source de publication}
-    {2024-Pr\'esent}
-    {Python, TypeScript, JavaScript}
-    {React, FastAPI, Pandas, GitHub Actions, Docker}
-    {\'Equilibre entre flexibilit\'e et standardisation ; garantie de la reproductibilit\'e ; gestion des d\'ependances ; consid\'erations de s\'ecurit\'e pour les outils destin\'es au grand public}
-    {D\'eveloppement d'outils internes puis open source pour la publication industrialis\'ee d'articles et de contenus ouverts au grand public, r\'eduisant la dette technique et la d\'ependance. Mise en place de pipelines CI/CD, de tests automatis\'es et de g\'en\'eration de documentation.}
-
-\resumeDetailedProject
-    {Mod\`eles LLM pour le clustering de texte}
-    {2024-Pr\'esent}
-    {Python}
-    {Transformers, scikit-learn, Sentence-BERT, HuggingFace}
-    {Contraintes de confidentialit\'e (NDA) ; traitement de texte fran\c{c}ais avec jargon technique ; s\'election et fine-tuning de mod\`eles ; optimisation des performances}
-    {Co-design, d\'eveloppement et d\'eploiement de mod\`eles LLM pour clusteriser les r\'eponses d'enqu\^ete \`a champs libres. Mise en \oe uvre de l'ing\'enierie de prompts, \'evaluation de plusieurs architectures de mod\`eles et d\'eploiement de la solution en environnement de production.}
-
-\resumeDetailedProject
-    {\'Etudes sur la d\'elinquance \'economique et financi\`ere}
-    {2024-Pr\'esent}
-    {Python, R, SQL}
-    {Pandas, ggplot2, dplyr, PostgreSQL, DuckDB}
-    {Donn\'ees provenant de multiples sources (Police Nationale, Gendarmerie) avec diff\'erents formats ; traitement de donn\'ees sensibles ; besoin d'analyses reproductibles}
-    {R\'edaction d'\'etudes sur la d\'elinquance \'economique et financi\`ere en utilisant les donn\'ees de la Police Nationale et de la Gendarmerie. D\'eveloppement de pipelines d'analyse standardis\'es et de mod\`eles de visualisation.}
-
+\resumeJobMission{Refonte des processus ETL}{Refonte des processus ETL pour 20\Plus agents, permettant de réduire de plus de 80\% le délai entre les acquisitions de données et la mise en production. Mise en place de traitement incrémentiel, de cadres de validation des données et d'alertes automatisées. Formation des membres de l'équipe aux nouveaux processus et outils.}
+\resumeJobMission{Mise en place d'une culture du changement}{Mise en place d'une culture du changement avec des outils et méthodes de travail plus modernes. Création de documentation, de modèles et de kits de démarrage. Organisation de sessions de formation et d'ateliers. Développement d'outils internes pour réduire la barrière à l'entrée pour les utilisateurs non techniques.}
+\resumeJobMission{Outils open-source de publication}{Développement d'outils internes puis open source pour la publication industrialisée d'articles et de contenus ouverts au grand public, réduisant la dette technique et la dépendance. Mise en place de pipelines CI/CD, de tests automatisés et de génération de documentation.}
+\resumeJobMission{Modèles LLM pour le clustering de texte}{Co-design, développement et déploiement de modèles LLM pour clusteriser les réponses d'enqu\^ete à champs libres. Mise en \oe uvre de l'ingénierie de prompts, évaluation de plusieurs architectures de modèles et déploiement de la solution en environnement de production.}
+\resumeJobMission{études sur la délinquance économique et financière}{Rédaction d'études sur la délinquance économique et financière en utilisant les données de la Police Nationale et de la Gendarmerie. Développement de pipelines d'analyse standardisés et de modèles de visualisation.}
 \resumeProjectListEnd
 
-\resumeSubheading{INSEE}{Nantes, France}{Ing\'enieur DevOps}{2021 -- 2024}
+\resumeSubheading{INSEE}{Nantes, France}{Ingénieur DevOps}{2021 -- 2024}
 
-Support et exploitation de syst\`emes d'information critiques. POC avec technologies avanc\'ees de Python (pandas, numpy, Dask, scikit-learn, XGBoost, TensorFlow/PyTorch, MLflow, Polars, pyarrow, Modin, Ray, FastAPI). Support et maintien de syst\`emes d'information critiques : stack compl\`ete en environnement conteneuris\'e (Docker, Kubernetes, Helm) avec couches basses (Linux Ubuntu/Debian, r\'eseaux TCP/IP, stockage S3) et hautes (PostgreSQL, Redis, microservices). Analyse et r\'esolution d'incidents applicatifs internes et open source. Am\'elioration continue des flux et processus SI avec observabilit\'e (Prometheus, Grafana, ELK, OpenTelemetry).
+Support et exploitation de systèmes d'information critiques. POC avec technologies avancées de Python (pandas, numpy, Dask, scikit-learn, XGBoost, TensorFlow/PyTorch, MLflow, Polars, pyarrow, Modin, Ray, FastAPI). Support et maintien de systèmes d'information critiques : stack complète en environnement conteneurisé (Docker, Kubernetes, Helm) avec couches basses (Linux Ubuntu/Debian, réseaux TCP/IP, stockage S3) et hautes (PostgreSQL, Redis, microservices). Analyse et résolution d'incidents applicatifs internes et open source. Amélioration continue des flux et processus SI avec observabilité (Prometheus, Grafana, ELK, OpenTelemetry).
 
 DevOps et support de la plateforme de datascience de l'INSEE
+
 \resumeProjectListStart
-
-\resumeDetailedProject
-    {D\'eveloppement de la plateforme Onyxia}
-    {2021-2024}
-    {Go, Python, TypeScript, YAML}
-    {Kubernetes, Helm, Docker, GitLab CI/CD, GitHub Actions, ArgoCD, Vault, Prometheus, Grafana}
-    {Architecture multi-locataires complexe ; exigences de s\'ecurit\'e pour les donn\'ees gouvernementales ; int\'egration avec les syst\`emes h\'erit\'es ; besoins de scalabilit\'e}
-    {Co-d\'eveloppement et installation d'une \textit{Plateforme As A Service} (\href{https://github.com/InseeFrLab/onyxia}{\textit{Onyxia}}). Conception d'architecture microservices, mise en \oe uvre de l'authentification/autorisation, et d\'eploiement de la stack de monitoring.}
-
-\resumeDetailedProject
-    {Impl\'ementation d'une stack technique moderne}
-    {2021-2024}
-    {Bash, Python, YAML}
-    {Docker, Helm, Pipelines GitLab, GitHub Actions, Grafana, Prometheus, Vault, Terraform, Ubuntu/Debian, S3}
-    {R\'esistance au changement de la part de l'\'equipe existante ; n\'ecessit\'e de maintenir les anciens syst\`emes pendant la transition ; besoins de formation pour 500+ utilisateurs}
-    {D\'eveloppement et remplacement de la stack technique compl\`ete et neuve. Cr\'eation de guides de migration, automatisation des processus de d\'eploiement et r\'eduction du temps de d\'eploiement de plusieurs semaines \`a quelques heures (acc\'el\'eration par 10).}
-
-\resumeDetailedProject
-    {Support aux Data Scientists}
-    {2021-2024}
-    {Python, R, Bash}
-    {JupyterHub, RStudio Server, PyCharm, VS Code, Kubernetes}
-    {Large \'eventail de niveaux de comp\'etence des utilisateurs (d\'ebutants \`a avanc\'es) ; cas d'usage vari\'es (notebooks, tableaux de bord, IDE) ; contraintes de ressources}
-    {Support de proximit\'e aux \textit{Data Scientists} d\'ebutants jusqu'aux avanc\'es pour l'int\'egration de leurs services (notebooks, applications internes de dataviz, IDE data : Rstudio \& Pycharm). D\'eveloppement de mod\`eles, de documentation et de bonnes pratiques.}
-
+\resumeJobTechnologies{Go, Python, TypeScript, YAML, Bash, R, Kubernetes, Helm, Docker, GitLab CI/CD, GitHub Actions, ArgoCD, Vault, Prometheus, Grafana, Terraform, Ubuntu/Debian, S3, JupyterHub, RStudio Server, PyCharm, VS Code}
+\resumeJobMission{Développement de la plateforme Onyxia}{Co-développement et installation d'une \textit{Plateforme As A Service} (\href{https://github.com/InseeFrLab/onyxia}{\textit{Onyxia}}). Conception d'architecture microservices, mise en \oe uvre de l'authentification/autorisation, et déploiement de la stack de monitoring.}
+\resumeJobMission{Implémentation d'une stack technique moderne}{Développement et remplacement de la stack technique complète et neuve. Création de guides de migration, automatisation des processus de déploiement et réduction du temps de déploiement de plusieurs semaines à quelques heures (accélération par 10).}
+\resumeJobMission{Support aux Data Scientists}{Support de proximité aux \textit{Data Scientists} débutants jusqu'aux avancés pour l'intégration de leurs services (notebooks, applications internes de dataviz, IDE data : Rstudio \& Pycharm). Développement de modèles, de documentation et de bonnes pratiques.}
 \resumeProjectListEnd
 
-\resumeSubheading{INSEE}{Nantes, France}{Ing\'enieur data plateforme}{2020 -- 2021}
+\resumeSubheading{INSEE}{Nantes, France}{Ingénieur data plateforme}{2020 -- 2021}
 
+
+\resumeJobTechnologies{PowerShell, Batch, Python, R, Windows Server, Active Directory, IIS, SQL Server, Prometheus, Grafana, Compteurs de performance Windows, Pandas, tidyverse, reticulate}
 Sys-admin de la plateforme de datascience interne
+
 \resumeProjectListStart
-
-\resumeDetailedProject
-    {D\'eploiement de composants de plateforme}
-    {2020-2021}
-    {PowerShell, Batch, Python}
-    {Windows Server, Active Directory, IIS, SQL Server}
-    {Infrastructure h\'erit\'ee avec des ressources limit\'ees ; contraintes de s\'ecurit\'e ; besoin de haute disponibilit\'e ; gestion complexe des utilisateurs}
-    {Mise en place de briques permettant \`a 500\Plus datascientists de l'INSEE de gagner jusqu'\`a 80\% de leur temps pour d\'eployer des outils et \'etudes internes. Automatisation des scripts de d\'eploiement et cr\'eation de portails en libre-service.}
-
-\resumeDetailedProject
-    {Syst\`eme de monitoring des ressources}
-    {2020-2021}
-    {Python, PowerShell}
-    {Prometheus, Grafana, Compteurs de performance Windows}
-    {Visibilit\'e limit\'ee sur l'utilisation des ressources ; ressources physiques partag\'ees ; priorit\'es concurrentes ; besoin de donn\'ees historiques}
-    {Mise en place de monitoring et de supervision des processus pour cadencer les ressources physiques partag\'ees (windows server). Optimisation de 20\% des resources utilis\'ees. Mise en place d'outils d'alerte et de planification de la capacit\'e.}
-
-\resumeDetailedProject
-    {Initiative de traduction de code}
-    {2020-2021}
-    {Python, R}
-    {Pandas, tidyverse, reticulate}
-    {Code propri\'etaire de 20 ans ; documentation limit\'ee ; r\'esistance des utilisateurs \`a l'aise avec l'ancien syst\`eme ; exigences de compatibilit\'e}
-    {Mise en place de projets de traduction de code pour sortir d'une licence propri\'etaire de data-analyse implant\'ee depuis 20 ans. D\'eveloppement d'outils de migration et formation aux alternatives open-source.}
-
+\resumeJobMission{Déploiement de composants de plateforme}{Mise en place de briques permettant à 500\Plus datascientists de l'INSEE de gagner jusqu'à 80\% de leur temps pour déployer des outils et études internes. Automatisation des scripts de déploiement et création de portails en libre-service.}
+\resumeJobMission{Système de monitoring des ressources}{Mise en place de monitoring et de supervision des processus pour cadencer les ressources physiques partagées (windows server). Optimisation de 20\% des resources utilisées. Mise en place d'outils d'alerte et de planification de la capacité.}
+\resumeJobMission{Initiative de traduction de code}{Mise en place de projets de traduction de code pour sortir d'une licence propriétaire de data-analyse implantée depuis 20 ans. Développement d'outils de migration et formation aux alternatives open-source.}
 \resumeProjectListEnd
 
-\resumeSubheading{Central Statistics Office}{Dublin, Irelande}{Stage de fin d'\'etudes}{2020}
+\resumeSubheading{Central Statistics Office}{Dublin, Irelande}{Stage de fin d'études}{2020}
 Assistant Statisticien
+
 \resumeProjectListStart
-
-\resumeDetailedProject
-    {Rapport officiel des statistiques annuelles}
-    {2020}
-    {R, LaTeX}
-    {knitr, ggplot2, dplyr, R Markdown}
-    {D\'elai serr\'e ; besoin de mise en forme officielle du gouvernement ; collaboration avec plusieurs parties prenantes ; exigences de validation des donn\'ees}
-    {Co-\'edition du rapport officiel sur les statistiques annuelles de l'Irlande. D\'eveloppement de pipeline de g\'en\'eration de rapports automatis\'es et cr\'eation de mod\`eles r\'eutilisables pour les rapports futurs.}
-
-\resumeDetailedProject
-    {Traitement des donn\'ees m\'et\'eorologiques historiques}
-    {2020}
-    {R, Python}
-    {Pandas, expressions r\'eguli\`eres, OCR (Tesseract)}
-    {Enregistrements manuscrits de 250+ ans ; formats de donn\'ees incoh\'erents ; d\'efis de reconnaissance de caractères ; formats de dates historiques}
-    {Mise en place d'un cahier des charges pour la lecture automatique de relev\'es m\'et\'eorologiques mensuels depuis 250\Plus ans. Impl\'ementation de pipeline OCR prototype et de r\`egles de validation des donn\'ees.}
-
+\resumeJobMission{Rapport officiel des statistiques annuelles}{Co-édition du rapport officiel sur les statistiques annuelles de l'Irlande. Développement de pipeline de génération de rapports automatisés et création de modèles réutilisables pour les rapports futurs.}
+\resumeJobMission{Traitement des données météorologiques historiques}{Mise en place d'un cahier des charges pour la lecture automatique de relevés météorologiques mensuels depuis 250\Plus ans. Implémentation de pipeline OCR prototype et de règles de validation des données.}
 \resumeProjectListEnd
 
 \resumeSubHeadingListEnd
 
 
-\vspace{-5mm}
+\vspace{\spaceSecSep}
 
 %-----------EDUCATION-----------------
 \section{Education}
 \resumeSubHeadingListStart
-\vspace{0.75mm}
+\vspace{\spaceExpSection}
 
 
 \resumeSubheading{ENSAI}{Rennes, France}{Engineering Degree (MSc.)}{2018 -- 2021}
 \resumeProjectListStart
-\resumeProjectItem{Sp\'ecialit\'e informatique - Big Data - optimisation - \'economie (micro \& macro) - D\'el\'egu\'e de classe}
+\resumeProjectItem{Spécialité informatique - Big Data - optimisation - économie (micro \& macro) - Délégué de classe}
 \resumeProjectListEnd
 
-\resumeSubheading{Lyc\'ee Fran\c{c}ais Premier}{Fontainebleau, France}{Classe Pr\'eparatoire aux Grandes \'Ecoles}{2015 -- 2018}
+\resumeSubheading{Lycée Fran\c{c}ais Premier}{Fontainebleau, France}{Classe Préparatoire aux Grandes écoles}{2015 -- 2018}
 \resumeProjectListStart
-\resumeProjectItem{\textit{MPSI -- MP}: Math\'ematiques - Physique - Science de l'ing\'enieur - Sp\'ecialit\'e informatique - D\'el\'egu\'e de classe.}
+\resumeProjectItem{\textit{MPSI -- MP}: Mathématiques - Physique - Science de l'ingénieur - Spécialité informatique - Délégué de classe.}
 \resumeProjectListEnd
 
 \resumeSubHeadingListEnd
 
-
-\vspace{-4mm}
+% \vspace{\spaceSecSep}
 
 %-----------COMPETENCES TECHNIQUES + LANGUES -----------------
 \begin{minipage}[t]{0.65\linewidth}
-    \section{Comp\'etences techniques}
+    \section{Compétences techniques}
     \resumeSubHeadingListStart
-    \resumeSubItem{Programmation}{Python (avanc\'e), Java, JavaScript/TypeScript, R, Bash, Go}
+    \resumeSubItem{Programmation}{Python (avancé), Java, JavaScript/TypeScript, R, Bash, Go}
     \resumeSubItem{Infrastructure}{Docker, Kubernetes, Helm, CI/CD (GitLab, GitHub Actions), Terraform}
-    \resumeSubItem{Bases de donn\'ees}{PostgreSQL, DuckDB, MySQL}
+    \resumeSubItem{Bases de données}{PostgreSQL, DuckDB, MySQL}
     \resumeSubItem{Stockage}{S3}
-    \resumeSubItem{Syst\`emes}{Linux (Ubuntu/Debian), Windows Server}
+    \resumeSubItem{Systèmes}{Linux (Ubuntu/Debian), Windows Server}
     \resumeSubItem{Plateformes Cloud}{Google Cloud Platform (GCP), Amazon Web Services (AWS)}
-    \resumeSubItem{Ing\'enierie des donn\'ees}{Apache Airflow, Pandas, NumPy, Apache Spark, Dask, Polars, pyarrow, Modin, Ray}
+    \resumeSubItem{Ingénierie des données}{Apache Airflow, Pandas, NumPy, Apache Spark, Dask, Polars, pyarrow, Modin, Ray}
     \resumeSubItem{ML/IA}{scikit-learn, TensorFlow, Transformers, HuggingFace, Fine-tuning de LLM, MLflow}
     \resumeSubItem{Monitoring}{Prometheus, Grafana, Stack ELK, OpenTelemetry, Datadog}
     \resumeSubItem{Outils DevOps}{Ansible, Vault, ArgoCD, GitHub Workflows}
@@ -346,31 +290,17 @@ Assistant Statisticien
 \end{minipage}
 
 
-%\vspace{0.5mm}
+%\vspace{\spaceProjSec}
 
 %-----------PROJECTS-----------------
-\section{Projets personnels et int\'er\^ets}
-\vspace{0.5mm}
+\section{Projets personnels et intér\^ets}
+\vspace{\spaceProjSec}
 \begin{minipage}[t]{0.9865\textwidth}
 \resumeSubHeadingListStart
 
-\resumeDetailedProject
-    {HabitatCalc}
-    {2022-Pr\'esent}
-    {JavaScript, TypeScript, HTML/CSS}
-    {React, Chart.js, Bootstrap, GitHub Pages}
-    {Calculs financiers complexes ; gestion des cas particuliers ; design responsive pour mobile ; validation des entr\'ees utilisateur}
-    {Application immobili\`ere : Optimisation entre location et achat d'un bien immobilier avec des param\`etres r\'eels. \href{https://odysseu.github.io/HabitatCalc/}{\textit{HabitatCalc}}.} 
-
-\resumeDetailedProject
-    {TrancheMaster}
-    {2022-Pr\'esent}
-    {JavaScript, TypeScript, HTML/CSS}
-    {React, D3.js, GitHub Pages}
-    {Calculs complexes de tranches d'imposition ; gestion des taux progressifs ; d\'efis de visualisation ; cas particuliers de la loi fiscale}
-    {Application fiscale : Compr\'ehension des tranches marginales d'imposition sur le revenu et le taux d'imposition. \href{https://odysseu.github.io/TrancheMaster/}{\textit{TrancheMaster}}.} 
-
-  \resumeSubItem{Veille et s\'eminaires}{\href{https://www.numerique.gouv.fr/agenda/etat-dans-le-nuage-2026/}{\textit{L'Etat dans le nuage 2026}}, Webinaires INSEE et Services Statistique Publique 2024 \`a 2026, Salon de l'IA 2023, KubeCon 2023, DevFest 2022 \& 2023, VivaTech 2022}
+\resumeJobMission{HabitatCalc}{Application immobilière : Optimisation entre location et achat d'un bien immobilier avec des paramètres réels. \href{https://odysseu.github.io/HabitatCalc/}{\textit{HabitatCalc}}.}
+\resumeJobMission{TrancheMaster}{Application fiscale : Compréhension des tranches marginales d'imposition sur le revenu et le taux d'imposition. \href{https://odysseu.github.io/TrancheMaster/}{\textit{TrancheMaster}}.}
+  \resumeSubItem{Veille et séminaires}{\href{https://www.numerique.gouv.fr/agenda/etat-dans-le-nuage-2026/}{\textit{L'Etat dans le nuage 2026}}, Webinaires INSEE et Services Statistique Publique 2024 à 2026, Salon de l'IA 2023, KubeCon 2023, DevFest 2022 \& 2023, VivaTech 2022}
   \resumeSubItem{Sport}{Triathlon, volley-ball, ski alpin, escalade de blocs}
   \resumeSubItem{Musique}{piano (4 ans), batterie (10 ans)}
 \resumeSubHeadingListEnd
