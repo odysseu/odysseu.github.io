@@ -55,9 +55,9 @@ def main():
     
     # Define all CV versions: (pdf_file, preview_file, display_name)
     cv_versions = [
-        ('pdf/cv_english.pdf', 'previews/english_simple_cv_preview.png', 'English Simple'),
+        ('pdf/cv_english_simple.pdf', 'previews/english_simple_cv_preview.png', 'English Simple'),
         ('pdf/cv_english.pdf', 'previews/english_full_cv_preview.png', 'English Full'),
-        ('pdf/cv_french.pdf', 'previews/french_simple_cv_preview.png', 'French Simple'),
+        ('pdf/cv_french_simple.pdf', 'previews/french_simple_cv_preview.png', 'French Simple'),
         ('pdf/cv_french.pdf', 'previews/french_full_cv_preview.png', 'French Full'),
     ]
     
