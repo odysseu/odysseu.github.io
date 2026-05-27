@@ -92,3 +92,6 @@ for file in "${all_files[@]}"; do
         echo "  ⚠ $file (missing)"
     fi
 done
+
+echo "Repository tree:"
+tree .

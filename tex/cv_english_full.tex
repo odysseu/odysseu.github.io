@@ -46,28 +46,43 @@
 \raggedright
 \setlength{\tabcolsep}{0in}
 
+%==== Spacing Variables ====
+\newlength{\spaceSectionTitle}\setlength{\spaceSectionTitle}{-1pt}
+\newlength{\spaceSectionRule}\setlength{\spaceSectionRule}{-5pt}
+\newlength{\spaceItemEnd}\setlength{\spaceItemEnd}{-0.8pt}
+\newlength{\spaceJobV}\setlength{\spaceJobV}{2pt}
+\newlength{\spaceJobTech}\setlength{\spaceJobTech}{2pt}
+\newlength{\spaceSubItem}\setlength{\spaceSubItem}{-4pt}
+\newlength{\spaceItemListEnd}\setlength{\spaceItemListEnd}{-2pt}
+\newlength{\spaceProjectList}\setlength{\spaceProjectList}{3pt}
+\newlength{\spaceJobMission}\setlength{\spaceJobMission}{3pt}
+\newlength{\spaceExpSection}\setlength{\spaceExpSection}{1pt}
+\newlength{\spaceSecSep}\setlength{\spaceSecSep}{-3mm}
+\newlength{\spaceEduSec}\setlength{\spaceEduSec}{-4mm}
+\newlength{\spaceProjSec}\setlength{\spaceProjSec}{0.5mm}
+
 % Sections formatting
 \titleformat{\section}{
-  \vspace{-1pt}\scshape\raggedright\large
-}{}{0em}{}[\[\color{black}\titlerule \vspace{-5pt}]
+  \vspace{\spaceSectionTitle}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule\vspace{\spaceSectionRule}]
+\renewcommand{\labelitemi}{\textbullet}
 
 %-------------------------
 % Custom commands
 \newcommand{\resumeItem}[2]{
   \item\small{
-    \textbf{#1}{: #2\vspace{-0.8pt}}
+    \textbf{#1}{: #2\vspace{\spaceItemEnd}}
   }
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{1.15pt}
+  \vspace{1pt}
   \small
   \item
-    \begin{tabular*}{0.97\textwidth}{l @{\extracolsep{\fill}}r}
-      \normalsize{\textbf{#1}}   & #2 \\
-      \small{#3} & #4 \\
+    \begin{tabular*}{0.97\textwidth}[t]{l @{\extracolsep{\fill}}r}
+      \normalsize{\textbf{#1} \textit{#3}} & #4 \\
+      & #2 \\
     \end{tabular*}
-  \vspace{1.5pt}
 }
 
 \def\Plus{\texttt{+\space}}
@@ -75,7 +90,7 @@
 % -------- ORIGINAL ------------
 
 \newcommand{\resumeSubItem}[2]{
-    \small{\resumeItem{#1}{#2}\vspace{-4pt}}
+    \small{\resumeItem{#1}{#2}\vspace{\spaceSubItem}}
 	
 }
 
@@ -83,12 +98,12 @@
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2pt}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{\spaceItemListEnd}}
 
 
 \newcommand{\resumeProjectListStart}{\begin{minipage}{0.97\textwidth} 
                                      \begin{itemize}[leftmargin=5mm]
-                                     \vspace{3pt}}
+                                     \vspace{\spaceProjectList}}
 \newcommand{\resumeProjectListEnd}{\end{itemize} 
                                    \end{minipage}}
 \newcommand{\resumeProjectItem}[1]{
@@ -106,6 +121,22 @@
         \end{minipage}
     }
     \vspace{3pt}
+}
+
+% New commands for consolidated job display
+\newcommand{\resumeJobTechnologies}[1]{
+    \vspace{\spaceJobTech}
+    \small{\textbf{Technologies: } #1}\vspace{\spaceJobTech}
+}
+
+\newcommand{\resumeJobMission}[2]{
+    \item\small{
+        \textbf{#1} \\ 
+        \begin{minipage}{0.95\textwidth}
+            \small{#2}
+        \end{minipage}
+    }
+    \vspace{\spaceJobMission}
 }
 
 %-------------------------------------------
@@ -146,14 +177,14 @@
 \end{minipage}
 \end{center}
 
-\vspace{-5mm}
+\vspace{\spaceSecSep}
 
 %-----------EXPERIENCE-----------------
 \section{Experience}
 
 \resumeSubHeadingListStart
 
-\vspace{0.75mm}
+\vspace{\spaceExpSection}
 
 
 \resumeSubheading{Ministry of the Interior}{Paris, France}{Data Scientist and IT Technical Referent}{2024 - Present}
@@ -161,48 +192,14 @@
 Data Engineering support, processing, securing, and automating data. Large-scale sensitive data exploitation in a secured environment (GDPR). Advanced and optimized SQL (PostgreSQL, DuckDB), Python (pandas, numpy, pyarrow, SQLAlchemy). Construction and improvement of data pipelines (ETL) with Apache Airflow. Data governance and quality control. Production of indicators for public decision-making support.
 
 Responsible for publications on economic and financial crime
+\resumeJobTechnologies{Python, R, SQL, Markdown, Bash, TypeScript, JavaScript, Apache Airflow, Pandas, NumPy, DuckDB, PostgreSQL, Git, GitHub, Docker, Jupyter, VS Code, React, FastAPI, GitHub Actions, Transformers, scikit-learn, Sentence-BERT, HuggingFace, ggplot2, dplyr}
 \resumeProjectListStart
 
-\resumeDetailedProject
-    {ETL Pipeline Redesign}
-    {2024-Present}
-    {Python, SQL, R}
-    {Apache Airflow, Pandas, NumPy, DuckDB, PostgreSQL}
-    {Legacy systems with 20+ years of technical debt; Resistance to change from non-technical stakeholders; Data quality issues in source systems; Need to maintain production during migration}
-    {Redesigned ETL processes for 20\plus agents, reducing the delay between data acquisition and production by over 80\%. Implemented incremental processing, data validation frameworks, and automated alerting. Trained team members on new processes and tools.}
-
-\resumeDetailedProject
-    {Culture of Change Implementation}
-    {2024-Present}
-    {Python, Markdown, Bash}
-    {Git, GitHub, Docker, Jupyter, VS Code}
-    {Diverse audience with varying technical skills (from Excel-only to advanced Python); resistance to adopting new tools; need to demonstrate immediate value}
-    {Implemented a culture of change with modern tools and methods. Created documentation, templates, and starter kits. Organized training sessions and workshops. Built internal tools to lower the barrier to entry for non-technical users.}
-
-\resumeDetailedProject
-    {Open-Source Publication Tools}
-    {2024-Present}
-    {Python, TypeScript, JavaScript}
-    {React, FastAPI, Pandas, GitHub Actions, Docker}
-    {Balancing flexibility with standardization; ensuring reproducibility; managing dependencies; security considerations for public-facing tools}
-    {Developed internal and open-source tools for the industrialized publication of articles and content for the general public, reducing technical debt and dependencies. Implemented CI/CD pipelines, automated testing, and documentation generation.}
-
-\resumeDetailedProject
-    {LLM for Text Clustering}
-    {2024-Present}
-    {Python}
-    {Transformers, scikit-learn, Sentence-BERT, HuggingFace}
-    {Privacy constraints (NDA); handling French text with technical jargon; model selection and fine-tuning; performance optimization}
-    {Co-designed, developed, and deployed LLM models to cluster free-text survey responses. Implemented prompt engineering, evaluated multiple model architectures, and deployed solution in production environment.}
-
-\resumeDetailedProject
-    {Economic Crime Studies}
-    {2024-Present}
-    {Python, R, SQL}
-    {Pandas, ggplot2, dplyr, PostgreSQL, DuckDB}
-    {Data from multiple sources (Police Nationale, Gendarmerie) with different formats; sensitive data handling; need for reproducible analysis}
-    {Wrote studies on economic and financial crime using data from the Police Nationale and Gendarmerie. Developed standardized analysis pipelines and visualization templates.}
-
+\resumeJobMission    {ETL Pipeline Redesign}    {Redesigned ETL processes for 20\plus agents, reducing the delay between data acquisition and production by over 80\%. Implemented incremental processing, data validation frameworks, and automated alerting. Trained team members on new processes and tools.}
+\resumeJobMission    {Culture of Change Implementation}    {Implemented a culture of change with modern tools and methods. Created documentation, templates, and starter kits. Organized training sessions and workshops. Built internal tools to lower the barrier to entry for non-technical users.}
+\resumeJobMission    {Open-Source Publication Tools}    {Developed internal and open-source tools for the industrialized publication of articles and content for the general public, reducing technical debt and dependencies. Implemented CI/CD pipelines, automated testing, and documentation generation.}
+\resumeJobMission    {LLM for Text Clustering}    {Co-designed, developed, and deployed LLM models to cluster free-text survey responses. Implemented prompt engineering, evaluated multiple model architectures, and deployed solution in production environment.}
+\resumeJobMission    {Economic Crime Studies}    {Wrote studies on economic and financial crime using data from the Police Nationale and Gendarmerie. Developed standardized analysis pipelines and visualization templates.}
 \resumeProjectListEnd
 
 \resumeSubheading{INSEE}{Nantes, France}{DevOps Engineer}{2021 -- 2024}
@@ -210,96 +207,43 @@ Responsible for publications on economic and financial crime
 Support and exploitation of critical information systems. POC with advanced Python technologies (pandas, numpy, Dask, scikit-learn, XGBoost, TensorFlow/PyTorch, MLflow, Polars, pyarrow, Modin, Ray, FastAPI). Support and maintenance of critical information systems: complete stack in containerized environment (Docker, Kubernetes, Helm) with low-level layers (Linux Ubuntu/Debian, TCP/IP networking, S3 storage) and high-level (PostgreSQL, Redis, microservices). Analysis and resolution of internal and open-source application incidents. Continuous improvement of SI flows and processes with observability (Prometheus, Grafana, ELK, OpenTelemetry).
 
 DevOps and support for INSEE's data science platform
+\resumeJobTechnologies{Go, Python, TypeScript, YAML, Bash, R, Kubernetes, Helm, Docker, GitLab CI/CD, GitHub Actions, ArgoCD, Vault, Prometheus, Grafana, Pipelines GitLab, Terraform, Ubuntu/Debian, S3, JupyterHub, RStudio Server, PyCharm, VS Code}
 \resumeProjectListStart
 
-\resumeDetailedProject
-    {Onyxia Platform Development}
-    {2021-2024}
-    {Go, Python, TypeScript, YAML}
-    {Kubernetes, Helm, Docker, GitLab CI/CD, GitHub Actions, ArgoCD, Vault, Prometheus, Grafana}
-    {Complex multi-tenant architecture; security requirements for government data; integration with legacy systems; scalability needs}
-    {Co-developed and installed the Platform As A Service (\href{https://github.com/InseeFrLab/onyxia}{\textit{Onyxia}}). Designed microservices architecture, implemented authentication/authorization, and deployed monitoring stack.}
-
-\resumeDetailedProject
-    {Modern Stack Implementation}
-    {2021-2024}
-    {Bash, Python, YAML}
-    {Docker, Helm, GitLab pipelines, GitHub Actions, Grafana, Prometheus, Vault, Terraform, Ubuntu/Debian, S3}
-    {Resistance to change from existing team; need to maintain old systems during transition; training requirements for 500+ users}
-    {Developed and implemented a new cutting-edge technical stack. Created migration guides, automated deployment processes, and reduced deployment time from weeks to hours (10x acceleration).}
-
-\resumeDetailedProject
-    {Data Scientist Support}
-    {2021-2024}
-    {Python, R, Bash}
-    {JupyterHub, RStudio Server, PyCharm, VS Code, Kubernetes}
-    {Wide range of user skill levels (beginners to advanced); diverse use cases (notebooks, dashboards, IDEs); resource constraints}
-    {Provided support to data scientists, from beginners to advanced, for integrating their services (notebooks, internal data visualization applications, IDEs: RStudio \& PyCharm). Developed templates, documentation, and best practices.}
-
+\resumeJobMission    {Onyxia Platform Development}    {Co-developed and installed the Platform As A Service (\href{https://github.com/InseeFrLab/onyxia}{\textit{Onyxia}}). Designed microservices architecture, implemented authentication/authorization, and deployed monitoring stack.}
+\resumeJobMission    {Modern Stack Implementation}    {Developed and implemented a new cutting-edge technical stack. Created migration guides, automated deployment processes, and reduced deployment time from weeks to hours (10x acceleration).}
+\resumeJobMission    {Data Scientist Support}    {Provided support to data scientists, from beginners to advanced, for integrating their services (notebooks, internal data visualization applications, IDEs: RStudio \& PyCharm). Developed templates, documentation, and best practices.}
 \resumeProjectListEnd
 
 \resumeSubheading{INSEE}{Nantes, France}{Data Platform Engineer}{2020 -- 2021}
 
 System administrator for the internal data science platform
+\resumeJobTechnologies{PowerShell, Batch, Python, R, Windows Server, Active Directory, IIS, SQL Server, Prometheus, Grafana, Compteurs de performance Windows, Pandas, tidyverse, reticulate}
 \resumeProjectListStart
 
-\resumeDetailedProject
-    {Platform Components Deployment}
-    {2020-2021}
-    {PowerShell, Batch, Python}
-    {Windows Server, Active Directory, IIS, SQL Server}
-    {Legacy infrastructure with limited resources; security constraints; need for high availability; complex user management}
-    {Implemented components enabling 500\Plus INSEE data scientists to save up to 80\% of their time in deploying internal tools and studies. Automated deployment scripts and created self-service portals.}
-
-\resumeDetailedProject
-    {Resource Monitoring System}
-    {2020-2021}
-    {Python, PowerShell}
-    {Prometheus, Grafana, Windows Performance Counters}
-    {Limited visibility into resource usage; shared physical resources; competing priorities; need for historical data}
-    {Set up monitoring and supervision of processes to manage shared physical resources (Windows Server). Optimized resource usage by 20\%. Implemented alerting and capacity planning tools.}
-
-\resumeDetailedProject
-    {Code Translation Initiative}
-    {2020-2021}
-    {Python, R}
-    {Pandas, tidyverse, reticulate}
-    {20-year old proprietary codebase; limited documentation; resistance from users comfortable with old system; compatibility requirements}
-    {Initiated projects to translate code to move away from a proprietary data analysis license that had been in place for 20 years. Developed migration tooling and provided training on open-source alternatives.}
-
+\resumeJobMission    {Platform Components Deployment}    {Implemented components enabling 500\Plus INSEE data scientists to save up to 80\% of their time in deploying internal tools and studies. Automated deployment scripts and created self-service portals.}
+\resumeJobMission    {Resource Monitoring System}    {Set up monitoring and supervision of processes to manage shared physical resources (Windows Server). Optimized resource usage by 20\%. Implemented alerting and capacity planning tools.}
+\resumeJobMission    {Code Translation Initiative}    {Initiated projects to translate code to move away from a proprietary data analysis license that had been in place for 20 years. Developed migration tooling and provided training on open-source alternatives.}
 \resumeProjectListEnd
 
 \resumeSubheading{Central Statistics Office}{Dublin, Ireland}{End-of-studies Internship}{2020}
 Statistical Assistant
+\resumeJobTechnologies{R, LaTeX, Python, knitr, ggplot2, dplyr, R Markdown, Pandas, regular expressions, OCR (Tesseract)}
 \resumeProjectListStart
 
-\resumeDetailedProject
-    {Annual Statistics Report}
-    {2020}
-    {R, LaTeX}
-    {knitr, ggplot2, dplyr, R Markdown}
-    {Tight deadline; need for official government formatting; collaboration with multiple stakeholders; data validation requirements}
-    {Co-edited the official report on Ireland's annual statistics. Developed automated report generation pipeline and created reusable templates for future reports.}
-
-\resumeDetailedProject
-    {Historical Weather Data Processing}
-    {2020}
-    {R, Python}
-    {Pandas, regular expressions, OCR (Tesseract)}
-    {250+ year old handwritten records; inconsistent data formats; character recognition challenges; historical date formats}
-    {Developed specifications for the automatic reading of monthly meteorological records from over 250 years ago. Implemented prototype OCR pipeline and data validation rules.}
-
+\resumeJobMission    {Annual Statistics Report}    {Co-edited the official report on Ireland's annual statistics. Developed automated report generation pipeline and created reusable templates for future reports.}
+\resumeJobMission    {Historical Weather Data Processing}    {Developed specifications for the automatic reading of monthly meteorological records from over 250 years ago. Implemented prototype OCR pipeline and data validation rules.}
 \resumeProjectListEnd
 
 \resumeSubHeadingListEnd
 
 
-\vspace{-5mm}
+\vspace{\spaceSecSep}
 
 %-----------EDUCATION-----------------
 \section{Education}
 \resumeSubHeadingListStart
-\vspace{0.75mm}
+\vspace{\spaceExpSection}
 
 
 \resumeSubheading{ENSAI}{Rennes, France}{Engineering Degree (MSc.)}{2018 -- 2021}
@@ -315,7 +259,7 @@ Statistical Assistant
 \resumeSubHeadingListEnd
 
 
-\vspace{-4mm}
+\vspace{\spaceEduSec}
 
 %-----------TECHNICAL SKILLS + LANGUAGES -----------------
 \begin{minipage}[t]{0.65\linewidth}
@@ -344,30 +288,16 @@ Statistical Assistant
 \end{minipage}
 
 
-%\vspace{0.5mm}
+%\vspace{\spaceProjSec}
 
 %-----------PROJECTS-----------------
 \section{Personal Projects and Interests}
-\vspace{0.5mm}
+\vspace{\spaceProjSec}
 \begin{minipage}[t]{0.9865\textwidth}
 \resumeSubHeadingListStart
 
-\resumeDetailedProject
-    {HabitatCalc}
-    {2022-Present}
-    {JavaScript, TypeScript, HTML/CSS}
-    {React, Chart.js, Bootstrap, GitHub Pages}
-    {Complex financial calculations; handling edge cases; responsive design for mobile; user input validation}
-    {Real Estate Web Application: Optimization between renting and buying a property with real parameters. \href{https://odysseu.github.io/HabitatCalc/}{\textit{HabitatCalc}}.} 
-
-\resumeDetailedProject
-    {TrancheMaster}
-    {2022-Present}
-    {JavaScript, TypeScript, HTML/CSS}
-    {React, D3.js, GitHub Pages}
-    {Complex tax bracket calculations; handling progressive tax rates; visualization challenges; edge cases in tax law}
-    {Tax Web Application: Understanding marginal tax brackets on income and tax rates. \href{https://odysseu.github.io/TrancheMaster/}{\textit{TrancheMaster}}.} 
-
+\resumeJobMission    {HabitatCalc}    {Real Estate Web Application: Optimization between renting and buying a property with real parameters. \href{https://odysseu.github.io/HabitatCalc/}{\textit{HabitatCalc}}.}
+\resumeJobMission    {TrancheMaster}    {Tax Web Application: Understanding marginal tax brackets on income and tax rates. \href{https://odysseu.github.io/TrancheMaster/}{\textit{TrancheMaster}}.}
   \resumeSubItem{Conferences and Seminars}{\href{https://www.numerique.gouv.fr/agenda/etat-dans-le-nuage-2026/}{\textit{L'Etat dans le nuage 2026}}, INSEE and Public Statistical Services Webinars 2024 to 2026, AI Salon 2023, KubeCon 2023, DevFest 2022 \& 2023, VivaTech 2022}
   \resumeSubItem{Sports}{Triathlon, volleyball, alpine skiing, bouldering}
   \resumeSubItem{Music}{Piano (4 years), drums (10 years)}

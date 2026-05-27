@@ -1,6 +1,7 @@
 \documentclass[a4paper,10pt]{article}
 
 \usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 
 \usepackage{fontawesome}
 \usepackage{latexsym}
@@ -16,8 +17,11 @@
 \usepackage{eurosym}
 \usepackage{xcolor}
 \usepackage{xfrac}
-\usepackage{vwcol} 
+\usepackage{vwcol}
 \usepackage{adjustbox}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[french]{babel}
 \definecolor{myBlue}{rgb}{0,0,0.55}
 
 
@@ -36,7 +40,7 @@
 \renewcommand{\footrulewidth}{0pt}
 
 \usepackage{geometry}
-\geometry{top=0.3cm, bottom=0.5cm, left=0.4cm, right=0.4cm}
+\geometry{top=0.2cm, bottom=0.4cm, left=0.3cm, right=0.3cm}
 
 \urlstyle{same}
 
@@ -44,28 +48,43 @@
 \raggedright
 \setlength{\tabcolsep}{0in}
 
+%==== Spacing Variables ====
+\newlength{\spaceSectionTitle}\setlength{\spaceSectionTitle}{-1pt}
+\newlength{\spaceSectionRule}\setlength{\spaceSectionRule}{-5pt}
+\newlength{\spaceItemEnd}\setlength{\spaceItemEnd}{-0.8pt}
+\newlength{\spaceJobV}\setlength{\spaceJobV}{2pt}
+\newlength{\spaceJobTech}\setlength{\spaceJobTech}{2pt}
+\newlength{\spaceSubItem}\setlength{\spaceSubItem}{-4pt}
+\newlength{\spaceItemListEnd}\setlength{\spaceItemListEnd}{-2pt}
+\newlength{\spaceProjectList}\setlength{\spaceProjectList}{3pt}
+\newlength{\spaceJobMission}\setlength{\spaceJobMission}{3pt}
+\newlength{\spaceExpSection}\setlength{\spaceExpSection}{1pt}
+\newlength{\spaceSecSep}\setlength{\spaceSecSep}{-3mm}
+\newlength{\spaceEduSec}\setlength{\spaceEduSec}{-4mm}
+\newlength{\spaceProjSec}\setlength{\spaceProjSec}{0.5mm}
+
 % Sections formatting
 \titleformat{\section}{
-  \vspace{-1pt}\scshape\raggedright\large
-}{}{0em}{}[\[\color{black}\titlerule \vspace{-5pt}]
+  \vspace{\spaceSectionTitle}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule\vspace{\spaceSectionRule}]
+\renewcommand{\labelitemi}{\textbullet}
 
 %-------------------------
 % Custom commands
 \newcommand{\resumeItem}[2]{
   \item\small{
-    \textbf{#1}{: #2\vspace{-0.8pt}}
+    \textbf{#1}{: #2\vspace{\spaceItemEnd}}
   }
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{1.15pt}
+  \vspace{3pt}
   \small
   \item
-    \begin{tabular*}{0.97\textwidth}{l @{\extracolsep{\fill}}r}
-      \normalsize{\textbf{#1}}   & #2 \\
-      \small{#3} & #4 \\
+    \begin{tabular*}{0.97\textwidth}[t]{l @{\extracolsep{\fill}}r}
+      \normalsize{\textbf{#1}} & #4 \\
+      \normalsize{\textit{#3}} & #2 \\
     \end{tabular*}
-  \vspace{1.5pt}
 }
 
 \def\Plus{\texttt{+\space}}
@@ -73,25 +92,54 @@
 % -------- ORIGINAL ------------
 
 \newcommand{\resumeSubItem}[2]{
-    \small{\resumeItem{#1}{#2}\vspace{-4pt}}
+    \small{\resumeItem{#1}{#2}\vspace{\spaceSubItem}}
 	
 }
 
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,label=\textbullet]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2pt}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{\spaceItemListEnd}}
 
 
 \newcommand{\resumeProjectListStart}{\begin{minipage}{0.97\textwidth} 
                                      \begin{itemize}[leftmargin=5mm]
-                                     \vspace{3pt}}
+                                     \vspace{\spaceProjectList}}
 \newcommand{\resumeProjectListEnd}{\end{itemize} 
                                    \end{minipage}}
 \newcommand{\resumeProjectItem}[1]{
     \item\small{#1}
     }
+
+% New commands for detailed version
+\newcommand{\resumeDetailedProject}[5]{
+    \item\small{
+        \textbf{#1} \hfill \textit{#2} \\ 
+        \begin{minipage}{0.95\textwidth}
+            \small{\textbf{Langages :} #3 \\ 
+            \textbf{Outils/Packages :} #4 \\ 
+            \textbf{Difficultés :} #5}
+        \end{minipage}
+    }
+    \vspace{\spaceProjectList}
+}
+
+% New commands for consolidated job display
+\newcommand{\resumeJobTechnologies}[1]{
+    \vspace{\spaceJobTech}
+    \small{\textbf{Technologies :} #1}\vspace{\spaceJobTech}
+}
+
+\newcommand{\resumeJobMission}[2]{
+    \item\small{
+        \textbf{#1} \\ 
+        \begin{minipage}{0.95\textwidth}
+            \small{#2}
+        \end{minipage}
+    }
+    \vspace{\spaceJobMission}
+}
 
 %-------------------------------------------
 %%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -99,14 +147,13 @@
 
 \begin{document}
 
-
 %----------HEADING-----------------
 \begin{center}
   \begin{minipage}{0.97\textwidth}
       \begin{minipage}[c]{0.6\linewidth}
           \huge \textbf{Ulysse \textsc{Boucherie}}
           \\
-          \emph{\large{Ing\'enieur DevOps coucou \& Data Scientist (MSc.)}}
+          \emph{\large{Ingénieur DevOps \& Data Scientist (MSc.)}}
       \end{minipage}
       \hfill
       \begin{minipage}[c]{0.215\linewidth}
@@ -124,106 +171,75 @@
 
 %------------PROJET-----------------------
 
-\begin{center}
-\begin{minipage}{0.5\textwidth}
-    \centering
-    \large \textbf{Ing\'enieur DevOps \& data au service de la modernisation des Services Statistiques Publics}
-\end{minipage}
-\end{center}
+% \begin{center}
+% \begin{minipage}{0.5\textwidth}
+%     \centering
+%     \large \textbf{Ingénieur DevOps \& data au service de la modernisation des Services Statistiques Publics}
+% \end{minipage}
+% \end{center}
 
-\vspace{-5mm}
+% \vspace{\spaceSecSep}
 
 %-----------EXPERIENCE-----------------
 \section{Experience}
 
 \resumeSubHeadingListStart
 
-\vspace{0.75mm}
+\vspace{\spaceExpSection}
 
 
-\resumeSubheading{Minist\`ere de la s\'ecurit\'e int\'erieur}{Paris, France}{Data Scientist et r\'ef\'erent technique informatique}{2024 - aujourd'hui}
+\resumeSubheading{\href{https://www.interieur.gouv.fr/Interstats/Actualites}{Ministère de l'intérieur}}{Paris, France}{Data Scientist et Référent technique informatique}{2024 - aujourd'hui}
 
-Responsable des publications sur la d\'elinquance \'economique et financi\`ere
 \resumeProjectListStart
-\resumeProjectItem{Refonte des processus ETL pour 20\Plus agents, permettant de r\'eduire de plus de 80\% le d\'elai entre les acquisitions de donn\'ees et la mise en production. Mise en place de traitement incr\'ementiel, de cadres de validation et d'alertes automatis\'ees.}
-\resumeProjectItem{Mise en place d'une culture du changement avec des outils et m\'ethodes de travail modernes pour un public h\'et\'erog\`ene en adaptabilit\'e, technicit\'e et ambition.}
-\resumeProjectItem{D\'eveloppement d'outils internes puis open source pour la publication industrialis\'ee d'articles et de contenus publics, r\'eduisant la dette technique et la d\'ependance.}
-\resumeProjectItem{Co-design, d\'eveloppement et d\'eploiement de mod\`eles LLM pour clusteriser les r\'eponses d'enqu\^etes \`a champs libres (\textit{priv\'e - NDA}).}
-\resumeProjectItem{R\'edaction d'\'etudes sur la d\'elinquance \'economique et financi\`ere avec les donn\'ees de la Police Nationale et de la Gendarmerie.}
+\resumeJobMission{Data engineering (DuckDB, PostgreSQL)}{Refonte des processus ETL pour 20\Plus agents réduisant de plus de 80\% les délais. Formation de l'équipe aux processus et outils.}
+\resumeJobMission{Modèles LLM pour reformuler et clustering les réponses d'enquête (Python, HuggingFace)}{Co-design, build et run de modèles LLM pour clusteriser les réponses permettant de valider les autres champs.}
+\resumeJobMission{Responsable des études de la délinquance économique et financière (Quarto, VS Code, Markdown, R, Rstudio, CICD)}{Pipelines d'analyse et de modèles de visualisation des résultats avec les données de la Police Nationale et de la Gendarmerie.}
+\resumeJobMission{Mise en place d'une culture du changement (Git, Suites Microsoft et Libre Office, \textit{Peer Programing})}{Initiative de modernisation des pratiques. Outils et méthodes de travail plus standards. Documentation, tutoriels, animation d'ateliers.}
+\resumeJobMission{Initiative pour le Développement d'outils open-source de publication (quarto, Markdown, Notebook, Github)}{Publication industrialisée d'articles et de contenus grand public, réduisant la dette technique et la dépendance propriétaire coûteuse.}
 \resumeProjectListEnd
 
-\resumeSubheading{INSEE}{Nantes, France}{Ing\'enieur DevOps}{2021 -- 2024}
-
-DevOps et support de la plateforme de datascience de l'INSEE
+\resumeSubheading{\href{https://www.insee.fr/fr/accueil}{INSEE}}{Nantes, France}{Ingénieur DevOps Data Plateform}{2021 -- 2024}
 \resumeProjectListStart
-\resumeProjectItem{Co-d\'eveloppement et installation de la \textit{Plateforme As A Service} (\href{https://github.com/InseeFrLab/onyxia}{\textit{Onyxia}}).}
-\resumeProjectItem{D\'eveloppement et remplacement de la stack technique compl\`ete (Docker, Helm, Pipelines GitLab et GitHub, Grafana, Prometheus, Vault, Ubuntu/Debian, S3) et acc\'el\'eration par 10 de la mise en production des services.}
-\resumeProjectItem{Support de proximit\'e aux \textit{Data Scientists} (d\'ebutants \`a avanc\'es) pour l'int\'egration de leurs services (notebooks, applications de dataviz, IDE : RStudio \& PyCharm).}
+\resumeJobMission{\textit{Plateform Engineer (Go, Kubernetes, Helm, Docker, Podman, GitLab CI/CD, GitHub Actions, ArgoCD, Vault, Prometheus, Grafana, ELK, OpenTelemetry, Terraform, S3)}}{Mode produit, \textit{Build} et \textit{Run} de la \textit{Plateforme As A Service} conteneurisée (\href{https://github.com/InseeFrLab/onyxia}{\textit{Onyxia}}). Construction et administrateur du cluster K8s.}
+\resumeJobMission{Modernisation de l'ancienne plateforme des services de datascience (TypeScript)}{Migration des services windows server vers k8s, automatisation des processus, réduction des \textit{time to market} et dette technique.}
+\resumeJobMission{Support aux Data Scientists (Jupyter Notebook, RStudio Server, PyCharm, VS Code)}{Résolutions d'incidents, intégration des services \textit{Data Science} et \textit{Machine Learning} de production.}
 \resumeProjectListEnd
 
-\resumeSubheading{INSEE}{Nantes, France}{Ing\'enieur data plateforme}{2020 -- 2021}
-
-Sys-admin de la plateforme de datascience interne
+\resumeSubheading{\href{https://www.insee.fr/fr/accueil}{INSEE}}{Nantes, France}{Ingénieur data plateforme}{2020 -- 2021}
 \resumeProjectListStart
-\resumeProjectItem{Mise en place de briques permettant \`a 500\Plus datascientists de gagner jusqu'\`a 80\% de leur temps pour d\'eployer des outils et \'etudes internes.}
-\resumeProjectItem{Mise en place de monitoring et de supervision des processus pour cadencer les ressources physiques partag\'ees (Windows Server). Optimisation de 20\% des ressources utilis\'ees.}
-\resumeProjectItem{Mise en place de projets de traduction de code pour sortir d'une licence propri\'etaire de data-analyse implant\'ee depuis 20 ans.}
+\resumeJobMission{Sys-admin de la plateforme de datascience (VM Ware, AGDLP, OIDC, LDAP, Active Directory, Puppet, Ansible)}{Build et Run des briques pour 500\Plus datascientists quotidien, gain de 80\% du temps des servics en libre accès partagés.}
+\resumeJobMission{Build et Run d'un système de monitoring des ressources (PowerShell, TaskManager)}{Supervision et planification du partage des ressources physiques, alerting SMTP, récupération de 20\%\Plus des resources utilisées.}
+\resumeJobMission{Migration langage propriétaire implanté depuis 20\Plus ans vers de l'open source (SAS)}{Traduction de code de projets de production. Méthode \textit{blue-green} et \textit{canary}. Développement d'outils de migration.}
 \resumeProjectListEnd
 
-\resumeSubheading{Central Statistics Office}{Dublin, Irelande}{Stage de fin d'\'etudes}{2020}
-Assistant Statisticien
+\resumeSubheading{\href{https://www.cso.ie}{Central Statistics Office}}{Dublin, Irelande}{Stage de fin d'études}{Été 2020}
 \resumeProjectListStart
-\resumeProjectItem{Co-\'edition du rapport officiel sur les statistiques annuelles de l'Irlande.}
-\resumeProjectItem{Mise en place d'un cahier des charges pour la lecture automatique de relev\'es m\'et\'eorologiques mensuels depuis 250\Plus ans.}
+\resumeJobMission{Machine learning sur les données météorologiques}{Cahier des charges et POC du pipeline OCR pour la lecture automatique de relevés mensuels mauels de 250\Plus ans.}
+\resumeJobMission{Assistant Statisticien}{Rapport officiel annuels de l'Irlande. Pipeline paramétré pour la génération de rapports.}
 \resumeProjectListEnd
-
-% \resumeSubheading{Safran Aircraft Engines}{Villaroche, France}{Engineering Internship in Aero-Mechanical Optimization}{2018 (6 months)}
-% \resumeProjectListStart
-% \resumeProjectItem{Development of a new method for parameterizing engine blades based on a Bézier surfaces representation. Development and implementation of Python scripts for aero-mechanical optimization workflows.}
-% \resumeProjectListEnd
-
 \resumeSubHeadingListEnd
-
-
-\vspace{-5mm}
-
-%-----------EDUCATION-----------------
-\section{Education}
-\resumeSubHeadingListStart
-\vspace{0.75mm}
-
-
-\resumeSubheading{ENSAI}{Rennes, France}{Engineering Degree (MSc.)}{2018 -- 2021}
-\resumeProjectListStart
-\resumeProjectItem{Sp\'ecialit\'e informatique - Big Data - optimisation - \'economie (micro \& macro) - D\'el\'egu\'e de classe}
-\resumeProjectListEnd
-
-\resumeSubheading{Lyc\'ee Fran\c{c}ais Premier}{Fontainebleau, France}{Classe Pr\'eparatoire aux Grandes \'Ecoles}{2015 -- 2018}
-\resumeProjectListStart
-\resumeProjectItem{\textit{MPSI -- MP}: Math\'ematiques - Physique - Science de l'ing\'enieur - Sp\'ecialit\'e informatique - D\'el\'egu\'e de classe.}
-\resumeProjectListEnd
-
-\resumeSubHeadingListEnd
-
-
-\vspace{-4mm}
 
 %-----------COMPETENCES TECHNIQUES + LANGUES -----------------
-\begin{minipage}[t]{0.65\linewidth}
-    \section{Comp\'etences techniques}
+\begin{minipage}[t]{0.75\linewidth}
+    %-----------EDUCATION-----------------
+    \section{Education}
     \resumeSubHeadingListStart
-    \resumeSubItem{Programmation}{Python (avanc\'e), Java, JavaScript/TypeScript, R, Bash, Go}
-    \resumeSubItem{Infrastructure}{Docker, Kubernetes, Helm, CI/CD (GitLab, GitHub Actions)}
-    \resumeSubItem{Bases de donn\'ees}{PostgreSQL, DuckDB, MySQL}
-    \resumeSubItem{Cloud}{S3, Google Cloud Platform (GCP), Amazon Web Services (AWS)}
-    \resumeSubItem{Syst\`emes}{Linux (Ubuntu/Debian), Windows Server}
-    \resumeSubItem{Data Engineering}{Apache Airflow, Pandas, NumPy, Dask}
-    \resumeSubItem{ML/IA}{scikit-learn, TensorFlow, Transformers, HuggingFace, MLflow}
-    \resumeSubItem{DevOps}{Terraform, Ansible, Vault, ArgoCD, GitHub Workflows}
+    \vspace{\spaceExpSection}
+    
+    \resumeSubheading{ENSAI}{Rennes, France}{Engineering Degree (MSc.)}{2018 -- 2021}
+    \resumeProjectListStart
+    \resumeProjectItem{Spécialité informatique, Délégué de classe, Vice président du Bureau des sports}
+    \resumeProjectListEnd
+    
+    \resumeSubheading{Lycée Fran\c{c}ais Premier}{Fontainebleau, France}{Classe Préparatoire aux Grandes écoles}{2015 -- 2018}
+    \resumeProjectListStart
+    \resumeProjectItem{\textit{MPSI -- MP}: Science de l'ingénieur, Spécialité informatique, Délégué de classe}
+    \resumeProjectListEnd
+    
     \resumeSubHeadingListEnd
     \end{minipage}
 \hfill
-\begin{minipage}[t]{0.3\linewidth}
+\begin{minipage}[t]{0.2\linewidth}
     \section{Langues}
     \resumeSubHeadingListStart
     \resumeSubItem{Fran\c{c}ais}{Natif}
@@ -233,18 +249,20 @@ Assistant Statisticien
 \end{minipage}
 
 
-% \vspace{0.5mm}
+%\vspace{\spaceProjSec}
 
 %-----------PROJECTS-----------------
-\section{Projets personnels et int\'er\^ets}
-\vspace{0.5mm}
+\section{Projets personnels et intérêts}
+\vspace{\spaceProjSec}
 \begin{minipage}[t]{0.9865\textwidth}
+
 \resumeSubHeadingListStart
-  \resumeSubItem{Application immobili\`ere}{Optimisation entre location et achat d'un bien immobilier avec des param\`etres r\'eels : \href{https://odysseu.github.io/HabitatCalc/}{\textit{HabitatCalc}}.} 
-  \resumeSubItem{Application fiscale}{Compr\'ehension des tranches marginales d'imposition sur le revenu et le taux d'imposition : \href{https://odysseu.github.io/TrancheMaster/}{\textit{TrancheMaster}}.} 
-  \resumeSubItem{Veille et s\'eminaires}{\href{https://www.numerique.gouv.fr/agenda/etat-dans-le-nuage-2026/}{\textit{L'Etat dans le nuage 2026}}, Webinaires INSEE et Services Statistique Publique 2024 \`a 2026, Salon de l'IA 2023, KubeCon 2023, DevFest 2022 \& 2023, VivaTech 2022}
-  \resumeSubItem{Sport}{Triathlon, volley-ball, ski alpin, escalade de blocs}
-  \resumeSubItem{Musique}{piano (4 ans), batterie (10 ans)}
+    \resumeSubItem{\href{https://odysseu.github.io/HabitatCalc/}{\textit{HabitatCalc} (Application immobilière)}}{Optimisation entre location et achat d'un bien immobilier avec des paramètres réels.}
+    \resumeSubItem{\href{https://odysseu.github.io/TrancheMaster/}{\textit{TrancheMaster} (Application fiscale)}}{Compréhension des tranches marginales d'imposition sur le revenu et du taux d'imposition.}
+    \resumeSubItem{\href{https://github.com/odysseu/Brawlstar-Club-Dashboard.github.io}{\textit{BrawlStar Club Dashboard} (Suivi des performances d'un Jeu mobile)}}{Dashboard des données réelles d'un jeu mobile de rôle.}
+    \resumeSubItem{Participations projets open source}{\href{https://github.com/quarto-dev/quarto-cli}{\textit{Quarto cli}}, \href{https://github.com/InseeFrLab/onyxia}{\textit{Onyxia}}, Packages Python, R et javascript}
+    \resumeSubItem{Veille et séminaires}{\href{https://www.numerique.gouv.fr/agenda/etat-dans-le-nuage-2026/}{\textit{L'Etat dans le nuage 2026}}, Webinaires INSEE et Services Statistique Publique 2024 à 2026, Salon de l'IA 2023, KubeCon 2023, DevFest 2022 \& 2023, VivaTech 2022.}
+    \resumeSubItem{Sport \& Musique}{Triathlon, volley-ball, beach volley, ski alpin, escalade de blocs, piano (4 ans), batterie (10 ans).}
 \resumeSubHeadingListEnd
 \end{minipage}
 

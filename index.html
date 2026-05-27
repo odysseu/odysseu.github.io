@@ -27,8 +27,8 @@
         <a href="https://github.com/odysseu" aria-label="GitHub Profile">
             <img src="circle_profile.png" alt="Profile Picture of Ulysse Boucherie" class="profile-picture">
         </a>
-        <h1>Download My CV</h1>
-        <p class="subtitle">Choose between simple or detailed versions</p>
+        <h1 data-i18n="title">Download My CV</h1>
+        <p class="subtitle" data-i18n="subtitle">Choose between simple or detailed versions</p>
 
         <div class="theme-toggle">
             <button onclick="toggleDarkMode()" id="darkModeBtn" aria-label="Toggle dark mode">🌓</button>
@@ -46,11 +46,11 @@
                 <div class="cv-grid">
                     <div class="cv-option" onclick="downloadCV('english_simple')">
                         <img src="previews/english_simple_cv_preview.png" alt="Preview of English Simple CV">
-                        <p class="version">Simple (1 page)</p>
+                        <p class="version" data-i18n="version_simple">Simple (1 page)</p>
                     </div>
                     <div class="cv-option" onclick="downloadCV('english_full')">
                         <img src="previews/english_full_cv_preview.png" alt="Preview of English Full CV">
-                        <p class="version">Full (Detailed)</p>
+                        <p class="version" data-i18n="version_full">Full (Detailed)</p>
                     </div>
                 </div>
             </div>
@@ -59,18 +59,18 @@
                 <div class="cv-grid">
                     <div class="cv-option" onclick="downloadCV('french_simple')">
                         <img src="previews/french_simple_cv_preview.png" alt="Preview of French Simple CV">
-                        <p class="version">Simple (1 page)</p>
+                        <p class="version" data-i18n="version_simple">Simple (1 page)</p>
                     </div>
                     <div class="cv-option" onclick="downloadCV('french_full')">
                         <img src="previews/french_full_cv_preview.png" alt="Preview of French Full CV">
-                        <p class="version">Complète (Détails techniques)</p>
+                        <p class="version" data-i18n="version_full">Complète (Détails techniques)</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="note">
-            <p>Click on any preview image above to download the corresponding CV version in PDF</p>
+            <p data-i18n="note">Click on any preview image above to download the corresponding CV version in PDF</p>
         </div>
     </div>
 

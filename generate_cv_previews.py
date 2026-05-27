@@ -16,6 +16,11 @@ def create_pdf_preview_gs(pdf_file, preview_file, width=200):
         print(f"  ⚠ {pdf_file} not found, skipping preview")
         return False
     
+    # Remove existing preview if it exists
+    if os.path.exists(preview_file):
+        os.remove(preview_file)
+        print(f"  - Removed old {preview_file}")
+    
     print(f"  - Creating {preview_file} using ghostscript...")
     try:
         # Extract basename for temporary file (remove directory path)

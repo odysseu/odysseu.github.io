@@ -1,0 +1,312 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{fontawesome}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[colorlinks,pdftex]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{eurosym}
+\usepackage{xcolor}
+\usepackage{xfrac}
+\usepackage{vwcol} 
+\usepackage{adjustbox}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[french]{babel}
+\definecolor{myBlue}{rgb}{0,0,0.55}
+
+
+\hypersetup{
+    urlcolor = {[rgb]{0,0,0}}
+}
+
+\newcommand\dunderline[3][-1pt]{{\%
+  \sbox0{#3}% 
+  \ooalign{\copy0\cr\rule[\dimexpr#1-#2\relax]{\wd0}{#2}}}}
+
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\usepackage{geometry}
+\geometry{top=0.2cm, bottom=0.4cm, left=0.3cm, right=0.3cm}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+%==== Spacing Variables ====
+\newlength{\spaceSectionTitle}\setlength{\spaceSectionTitle}{-1pt}
+\newlength{\spaceSectionRule}\setlength{\spaceSectionRule}{-5pt}
+\newlength{\spaceItemEnd}\setlength{\spaceItemEnd}{-0.8pt}
+\newlength{\spaceJobV}\setlength{\spaceJobV}{2pt}
+\newlength{\spaceJobTech}\setlength{\spaceJobTech}{2pt}
+\newlength{\spaceSubItem}\setlength{\spaceSubItem}{-4pt}
+\newlength{\spaceItemListEnd}\setlength{\spaceItemListEnd}{-2pt}
+\newlength{\spaceProjectList}\setlength{\spaceProjectList}{3pt}
+\newlength{\spaceJobMission}\setlength{\spaceJobMission}{3pt}
+\newlength{\spaceExpSection}\setlength{\spaceExpSection}{1pt}
+\newlength{\spaceSecSep}\setlength{\spaceSecSep}{-3mm}
+\newlength{\spaceEduSec}\setlength{\spaceEduSec}{-4mm}
+\newlength{\spaceProjSec}\setlength{\spaceProjSec}{0.5mm}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{\spaceSectionTitle}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule\vspace{\spaceSectionRule}]
+\renewcommand{\labelitemi}{\textbullet}
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2\vspace{\spaceItemEnd}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{1pt}
+  \small
+  \item
+    \begin{tabular*}{0.97\textwidth}[t]{l @{\extracolsep{\fill}}r}
+      \normalsize{\textbf{#1} \textit{#3}} & #4 \\
+      & #2 \\
+    \end{tabular*}
+}
+
+\def\Plus{\texttt{+\space}}
+
+% -------- ORIGINAL ------------
+
+\newcommand{\resumeSubItem}[2]{
+    \small{\resumeItem{#1}{#2}\vspace{\spaceSubItem}}
+	
+}
+
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{\spaceItemListEnd}}
+
+
+\newcommand{\resumeProjectListStart}{\begin{minipage}{0.97\textwidth} 
+                                     \begin{itemize}[leftmargin=5mm]
+                                     \vspace{\spaceProjectList}}
+\newcommand{\resumeProjectListEnd}{\end{itemize} 
+                                   \end{minipage}}
+\newcommand{\resumeProjectItem}[1]{
+    \item\small{#1}
+    }
+
+% New commands for detailed version
+\newcommand{\resumeDetailedProject}[5]{
+    \item\small{
+        \textbf{#1} \hfill \textit{#2} \\ 
+        \begin{minipage}{0.95\textwidth}
+            \small{\textbf{Langages :} #3 \\ 
+            \textbf{Outils/Packages :} #4 \\ 
+            \textbf{Difficult\'es :} #5}
+        \end{minipage}
+    }
+    \vspace{\spaceProjectList}
+}
+
+% New commands for consolidated job display
+\newcommand{\resumeJobTechnologies}[1]{
+    \vspace{\spaceJobTech}
+    \small{\textbf{Technologies :} #1}\vspace{\spaceJobTech}
+}
+
+\newcommand{\resumeJobMission}[2]{
+    \item\small{
+        \textbf{#1} \\ 
+        \begin{minipage}{0.95\textwidth}
+            \small{#2}
+        \end{minipage}
+    }
+    \vspace{\spaceJobMission}
+}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+
+%----------HEADING-----------------
+\begin{center}
+  \begin{minipage}{0.97\textwidth}
+      \begin{minipage}[c]{0.6\linewidth}
+          \huge \textbf{Ulysse \textsc{Boucherie}}
+          \\
+          \emph{\large{Ing\'enieur DevOps \& Data Scientist (MSc.)}}
+      \end{minipage}
+      \hfill
+      \begin{minipage}[c]{0.215\linewidth}
+          \begin{tabular*}{\textwidth}{c@{\extracolsep{\fill}} l}
+              \href{mailto:uboucherie1@gmail.com}{\raisebox{-0.055\height}{\faEnvelope}} & \href{mailto:uboucherie1@gmail.com}{\small{uboucherie1@gmail.com}} \\ 
+              \href{https://github.com/odysseu}{\raisebox{-0.035\height}{\faGlobe}} & \href{https://odysseu.github.io/}{\small{odysseu.github.io}} \\ 
+              \href{https://github.com/odysseu}{\raisebox{-0.035\height}{\faGithub}} & \href{https://github.com/odysseu}{\small{odysseu}} \\ 
+              \href{https://www.linkedin.com/in/ulysse-boucherie-7a3b2b111/}{\raisebox{-0.0925\height}{\faLinkedinSquare}} & \href{https://www.linkedin.com/in/ulysse-boucherie-7a3b2b111/}{\small{in/ulysse.boucherie}} \\ 
+              {\raisebox{-0.0925\height}{\faHome}} & \small{Fontainebleau, France}
+          \end{tabular*}
+      \end{minipage}
+  \end{minipage}
+  \end{center}
+
+
+%------------PROJET-----------------------
+
+\begin{center}
+\begin{minipage}{0.5\textwidth}
+    \centering
+    \large \textbf{Ing\'enieur DevOps \& data au service de la modernisation des Services Statistiques Publics}
+\end{minipage}
+\end{center}
+
+\vspace{\spaceSecSep}
+
+%-----------EXPERIENCE-----------------
+\section{Experience}
+
+\resumeSubHeadingListStart
+
+\vspace{\spaceExpSection}
+
+
+\resumeSubheading{Minist\`ere de la s\'ecurit\'e int\'erieur}{Paris, France}{Data Scientist et r\'ef\'erent technique informatique}{2024 - aujourd'hui}
+
+Aide \`a la Data Engineering, traitement, fiabilisation et automatisation de donn\'ees. Exploitation de donn\'ees sensibles \`a grande \'echelle en environnement s\'ecuris\'e (RGPD). SQL avanc\'e et optimis\'e (PostgreSQL, DuckDB), Python (pandas, numpy, pyarrow, SQLAlchemy). Construction et am\'elioration de flux de donn\'ees (ETL) avec Apache Airflow. Gouvernance et contr\^ole qualit\'e des donn\'ees. Production d'indicateurs d'aide \`a la d\'ecision publique.
+
+Responsable des publications sur la d\'elinquance \'economique et financi\`ere
+
+\resumeJobTechnologies{Python, R, SQL, Markdown, Bash, TypeScript, JavaScript, Apache Airflow, Pandas, NumPy, DuckDB, PostgreSQL, Git, GitHub, Docker, Jupyter, VS Code, React, FastAPI, GitHub Actions, Transformers, scikit-learn, Sentence-BERT, HuggingFace, ggplot2, dplyr}
+\resumeProjectListStart
+
+\resumeJobMission    {Refonte des processus ETL}    {Refonte des processus ETL pour 20\Plus agents, permettant de r\'eduire de plus de 80\% le d\'elai entre les acquisitions de donn\'ees et la mise en production. Mise en place de traitement incr\'ementiel, de cadres de validation des donn\'ees et d'alertes automatis\'ees. Formation des membres de l'\'equipe aux nouveaux processus et outils.}
+\resumeJobMission    {Mise en place d'une culture du changement}    {Mise en place d'une culture du changement avec des outils et m\'ethodes de travail plus modernes. Cr\'eation de documentation, de mod\`eles et de kits de d\'emarrage. Organisation de sessions de formation et d'ateliers. D\'eveloppement d'outils internes pour r\'eduire la barri\`ere \`a l'entr\'ee pour les utilisateurs non techniques.}
+\resumeJobMission    {Outils open-source de publication}    {D\'eveloppement d'outils internes puis open source pour la publication industrialis\'ee d'articles et de contenus ouverts au grand public, r\'eduisant la dette technique et la d\'ependance. Mise en place de pipelines CI/CD, de tests automatis\'es et de g\'en\'eration de documentation.}
+\resumeJobMission    {Mod\`eles LLM pour le clustering de texte}    {Co-design, d\'eveloppement et d\'eploiement de mod\`eles LLM pour clusteriser les r\'eponses d'enqu\^ete \`a champs libres. Mise en \oe uvre de l'ing\'enierie de prompts, \'evaluation de plusieurs architectures de mod\`eles et d\'eploiement de la solution en environnement de production.}
+\resumeJobMission    {\'Etudes sur la d\'elinquance \'economique et financi\`ere}    {R\'edaction d'\'etudes sur la d\'elinquance \'economique et financi\`ere en utilisant les donn\'ees de la Police Nationale et de la Gendarmerie. D\'eveloppement de pipelines d'analyse standardis\'es et de mod\`eles de visualisation.}
+\resumeProjectListEnd
+
+\resumeSubheading{INSEE}{Nantes, France}{Ing\'enieur DevOps}{2021 -- 2024}
+
+Support et exploitation de syst\`emes d'information critiques. POC avec technologies avanc\'ees de Python (pandas, numpy, Dask, scikit-learn, XGBoost, TensorFlow/PyTorch, MLflow, Polars, pyarrow, Modin, Ray, FastAPI). Support et maintien de syst\`emes d'information critiques : stack compl\`ete en environnement conteneuris\'e (Docker, Kubernetes, Helm) avec couches basses (Linux Ubuntu/Debian, r\'eseaux TCP/IP, stockage S3) et hautes (PostgreSQL, Redis, microservices). Analyse et r\'esolution d'incidents applicatifs internes et open source. Am\'elioration continue des flux et processus SI avec observabilit\'e (Prometheus, Grafana, ELK, OpenTelemetry).
+
+DevOps et support de la plateforme de datascience de l'INSEE
+\resumeProjectListStart
+
+\resumeJobTechnologies{Go, Python, TypeScript, YAML, Bash, R, Kubernetes, Helm, Docker, GitLab CI/CD, GitHub Actions, ArgoCD, Vault, Prometheus, Grafana, Pipelines GitLab, Terraform, Ubuntu/Debian, S3, JupyterHub, RStudio Server, PyCharm, VS Code}
+
+\resumeJobMission    {D\'eveloppement de la plateforme Onyxia}    {Co-d\'eveloppement et installation d'une \textit{Plateforme As A Service} (\href{https://github.com/InseeFrLab/onyxia}{\textit{Onyxia}}). Conception d'architecture microservices, mise en \oe uvre de l'authentification/autorisation, et d\'eploiement de la stack de monitoring.}
+\resumeJobMission    {Impl\'ementation d'une stack technique moderne}    {D\'eveloppement et remplacement de la stack technique compl\`ete et neuve. Cr\'eation de guides de migration, automatisation des processus de d\'eploiement et r\'eduction du temps de d\'eploiement de plusieurs semaines \`a quelques heures (acc\'el\'eration par 10).}
+\resumeJobMission    {Support aux Data Scientists}    {Support de proximit\'e aux \textit{Data Scientists} d\'ebutants jusqu'aux avanc\'es pour l'int\'egration de leurs services (notebooks, applications internes de dataviz, IDE data : Rstudio \& Pycharm). D\'eveloppement de mod\`eles, de documentation et de bonnes pratiques.}
+\resumeProjectListEnd
+
+\resumeSubheading{INSEE}{Nantes, France}{Ing\'enieur data plateforme}{2020 -- 2021}
+
+
+\resumeJobTechnologies{PowerShell, Batch, Python, R, Windows Server, Active Directory, IIS, SQL Server, Prometheus, Grafana, Compteurs de performance Windows, Pandas, tidyverse, reticulate}
+Sys-admin de la plateforme de datascience interne
+\resumeProjectListStart
+
+\resumeJobMission    {D\'eploiement de composants de plateforme}    {Mise en place de briques permettant \`a 500\Plus datascientists de l'INSEE de gagner jusqu'\`a 80\% de leur temps pour d\'eployer des outils et \'etudes internes. Automatisation des scripts de d\'eploiement et cr\'eation de portails en libre-service.}
+\resumeJobMission    {Syst\`eme de monitoring des ressources}    {Mise en place de monitoring et de supervision des processus pour cadencer les ressources physiques partag\'ees (windows server). Optimisation de 20\% des resources utilis\'ees. Mise en place d'outils d'alerte et de planification de la capacit\'e.}
+\resumeJobMission    {Initiative de traduction de code}    {Mise en place de projets de traduction de code pour sortir d'une licence propri\'etaire de data-analyse implant\'ee depuis 20 ans. D\'eveloppement d'outils de migration et formation aux alternatives open-source.}
+\resumeProjectListEnd
+
+\resumeSubheading{Central Statistics Office}{Dublin, Irelande}{Stage de fin d'\'etudes}{2020}
+Assistant Statisticien
+\resumeProjectListStart
+
+\resumeJobMission    {Rapport officiel des statistiques annuelles}    {Co-\'edition du rapport officiel sur les statistiques annuelles de l'Irlande. D\'eveloppement de pipeline de g\'en\'eration de rapports automatis\'es et cr\'eation de mod\`eles r\'eutilisables pour les rapports futurs.}
+\resumeJobMission    {Traitement des donn\'ees m\'et\'eorologiques historiques}    {Mise en place d'un cahier des charges pour la lecture automatique de relev\'es m\'et\'eorologiques mensuels depuis 250\Plus ans. Impl\'ementation de pipeline OCR prototype et de r\`egles de validation des donn\'ees.}
+\resumeProjectListEnd
+
+\resumeSubHeadingListEnd
+
+
+\vspace{\spaceSecSep}
+
+%-----------EDUCATION-----------------
+\section{Education}
+\resumeSubHeadingListStart
+\vspace{\spaceExpSection}
+
+
+\resumeSubheading{ENSAI}{Rennes, France}{Engineering Degree (MSc.)}{2018 -- 2021}
+\resumeProjectListStart
+\resumeProjectItem{Sp\'ecialit\'e informatique - Big Data - optimisation - \'economie (micro \& macro) - D\'el\'egu\'e de classe}
+\resumeProjectListEnd
+
+\resumeSubheading{Lyc\'ee Fran\c{c}ais Premier}{Fontainebleau, France}{Classe Pr\'eparatoire aux Grandes \'Ecoles}{2015 -- 2018}
+\resumeProjectListStart
+\resumeProjectItem{\textit{MPSI -- MP}: Math\'ematiques - Physique - Science de l'ing\'enieur - Sp\'ecialit\'e informatique - D\'el\'egu\'e de classe.}
+\resumeProjectListEnd
+
+\resumeSubHeadingListEnd
+
+% \vspace{\spaceSecSep}
+
+%-----------COMPETENCES TECHNIQUES + LANGUES -----------------
+\begin{minipage}[t]{0.65\linewidth}
+    \section{Comp\'etences techniques}
+    \resumeSubHeadingListStart
+    \resumeSubItem{Programmation}{Python (avanc\'e), Java, JavaScript/TypeScript, R, Bash, Go}
+    \resumeSubItem{Infrastructure}{Docker, Kubernetes, Helm, CI/CD (GitLab, GitHub Actions), Terraform}
+    \resumeSubItem{Bases de donn\'ees}{PostgreSQL, DuckDB, MySQL}
+    \resumeSubItem{Stockage}{S3}
+    \resumeSubItem{Syst\`emes}{Linux (Ubuntu/Debian), Windows Server}
+    \resumeSubItem{Plateformes Cloud}{Google Cloud Platform (GCP), Amazon Web Services (AWS)}
+    \resumeSubItem{Ing\'enierie des donn\'ees}{Apache Airflow, Pandas, NumPy, Apache Spark, Dask, Polars, pyarrow, Modin, Ray}
+    \resumeSubItem{ML/IA}{scikit-learn, TensorFlow, Transformers, HuggingFace, Fine-tuning de LLM, MLflow}
+    \resumeSubItem{Monitoring}{Prometheus, Grafana, Stack ELK, OpenTelemetry, Datadog}
+    \resumeSubItem{Outils DevOps}{Ansible, Vault, ArgoCD, GitHub Workflows}
+    \resumeSubHeadingListEnd
+    \end{minipage}
+\hfill
+\begin{minipage}[t]{0.3\linewidth}
+    \section{Langues}
+    \resumeSubHeadingListStart
+    \resumeSubItem{Fran\c{c}ais}{Natif}
+    \resumeSubItem{Anglais}{Bilingue}
+    \resumeSubItem{Espagnol}{Courant}
+    \resumeSubHeadingListEnd
+\end{minipage}
+
+
+%\vspace{\spaceProjSec}
+
+%-----------PROJECTS-----------------
+\section{Projets personnels et int\'er\^ets}
+\vspace{\spaceProjSec}
+\begin{minipage}[t]{0.9865\textwidth}
+\resumeSubHeadingListStart
+
+\resumeJobMission    {HabitatCalc}    {Application immobili\`ere : Optimisation entre location et achat d'un bien immobilier avec des param\`etres r\'eels. \href{https://odysseu.github.io/HabitatCalc/}{\textit{HabitatCalc}}.}
+\resumeJobMission    {TrancheMaster}    {Application fiscale : Compr\'ehension des tranches marginales d'imposition sur le revenu et le taux d'imposition. \href{https://odysseu.github.io/TrancheMaster/}{\textit{TrancheMaster}}.}
+  \resumeSubItem{Veille et s\'eminaires}{\href{https://www.numerique.gouv.fr/agenda/etat-dans-le-nuage-2026/}{\textit{L'Etat dans le nuage 2026}}, Webinaires INSEE et Services Statistique Publique 2024 \`a 2026, Salon de l'IA 2023, KubeCon 2023, DevFest 2022 \& 2023, VivaTech 2022}
+  \resumeSubItem{Sport}{Triathlon, volley-ball, ski alpin, escalade de blocs}
+  \resumeSubItem{Musique}{piano (4 ans), batterie (10 ans)}
+\resumeSubHeadingListEnd
+\end{minipage}
+
+
+%-------------------------------------------
+\end{document}

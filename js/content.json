@@ -1,0 +1,20 @@
+{
+  "en": {
+    "title": "Download My CV",
+    "subtitle": "Choose between simple or detailed versions",
+    "note": "Click on any preview image above to download the corresponding CV version in PDF",
+    "language": "en",
+    "darkModeBtn": "🌓",
+    "version_simple": "Simple (1 page)",
+    "version_full": "Full (Detailed)"
+  },
+  "fr": {
+    "title": "Télécharger mon CV",
+    "subtitle": "Choisissez entre les versions simple ou détaillée",
+    "note": "Cliquez sur une image pour télécharger le CV correspondant en PDF",
+    "language": "fr",
+    "darkModeBtn": "🌓",
+    "version_simple": "Simple (1 page)",
+    "version_full": "Complète (Détails techniques)"
+  }
+}
