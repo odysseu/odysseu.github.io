@@ -90,8 +90,7 @@
       \end{minipage}
       %\hfill
       \begin{minipage}[c]{0.7\textwidth}
-        \normalsize{\textbf{#1}} \\ % Nom de l'entreprise
-        \normalsize{\textit{#3}}   % Poste
+        \normalsize{\textbf{#3}} - \normalsize{\textit{#1}}% Poste pui Nom de l'entreprise
       \end{minipage}
       \hfill
       \begin{minipage}[c]{0.13\textwidth}
@@ -153,11 +152,11 @@
     \item\small{#1}
     }
 
-\newcommand{\resumeJobMission}[2]{
+\newcommand{\resumeJobMission}[3]{
     \item\small{
-        \textbf{#1} \\
+        \textbf{#1} ({#2})\\ % job mission name and technologies
         \begin{minipage}{0.95\textwidth}
-            \small{#2}
+            \small{#3} % job mission description
         \end{minipage}
     }
     \vspace{\spaceJobMission}
@@ -175,7 +174,7 @@
             \vspace*{-5mm} % Décale vers le haut
           \huge \textbf{Ulysse \textsc{Boucherie} (30 y.o)}
           \\
-          \emph{\large{DevOps Engineer \& Data Scientist (MSc.)}}
+          \emph{\large{Full-stack DevOps Engineer \& Data Scientist (MSc.)}}
       \end{minipage}
       \hfill
       \begin{minipage}[c]{0.2\linewidth}
@@ -205,33 +204,33 @@
 \resumeSubHeadingListStart
 \vspace{\spaceExpSection}
 
-\resumeSubheading{French Ministry of Internal Affairs}{Paris, France}{Data Scientist and IT Technical Lead}{2024 -- today}{tex/Logo_du_Ministere_de_l'Interieur_carre.png}
+\resumeSubheading{French Ministry of Internal Affairs}{Paris, France}{Web Apps Technical Lead \& Data Scientist}{2024 -- today}{tex/Logo_du_Ministere_de_l'Interieur_carre.png}
 \resumeProjectListStart
-\resumeJobMission{Data engineering (Oracle, DuckDB, PostgreSQL)}{Redesign of the ETL process for 20\Plus agents, reducing processing times by more than 80\%. Migration from Oracle to PostgreSQL.}
-\resumeJobMission{\textit{RAG}, LLM models for rephrasing and clustering survey responses (Python, HuggingFace)}{Co-design, build, and run \textit{RAG} models to validate other fields and improve the quality of responses and data imputation.}
-\resumeJobMission{Head of economic and financial crime studies (Quarto, VS Code, Markdown, R, RStudio, CI/CD)}{Analysis and visualization model pipelines using Police Nationale and Gendarmerie data.}
-\resumeJobMission{Culture change initiative (Git, Microsoft and Libre Office suites, Peer Programming)}{Modernization of practices. More standard tools and working methods. Documentation, tutorials, workshop facilitation.}
-\resumeJobMission{Initiative for the development of open-source publication tools (Quarto, Markdown, Notebook, GitHub)}{Industrialized publication of articles and public content, reducing technical debt and costly proprietary dependencies.}
+\resumeJobMission{Data engineering}{Oracle, DuckDB, PostgreSQL}{Redesign of the ETL process for 20\Plus agents, reducing processing times by more than 80\%. Migration from Oracle to PostgreSQL.}
+\resumeJobMission{\textit{RAG}, LLM models for rephrasing and clustering survey responses}{HuggingFace}{Development from scratch of \textit{RAG} models to validate survey fields and improve the quality of responses and data imputation.}
+\resumeJobMission{Developed an automatic publication tooling package}{Markdown, Quarto, GitHub}{R package to industrialize the publication of articles \textit{as Code}, reducing technical debt and costly proprietary dependencies.}
+\resumeJobMission{Culture change leader}{Git, Libre Office, Peer Programming}{Modernized practices for standard tools and working methods. Leadership, Documentation, tutorials, workshops.}
+\resumeJobMission{Head of economic and financial crime studies}{VS Code}{Analysis and visualization model pipelines using Police Nationale and Gendarmerie data.}
 \resumeProjectListEnd
 
-\resumeSubheading{INSEE}{Nantes, France}{DevOps Engineer Data Plateform}{2021 -- 2024}{tex/Logo_INSEE_carre.png}
+\resumeSubheading{INSEE}{Nantes, France}{Full Stack Developer}{2021 -- 2024}{tex/Logo_INSEE_carre.png}
 \resumeProjectListStart
-\resumeJobMission{Plateform Engineer (Go, Kubernetes, Helm, Docker, Podman, GitLab CI/CD, GitHub Actions, ArgoCD, Vault, \\Prometheus, Grafana, Elastic search, Loki, Kibana, OpenTelemetry, Terraform, S3, Scrum, Kanban, Sprint)}{Mode produit, Agile, \textit{Build} and \textit{Run} of the containerized \textit{PaaS} (\href{https://github.com/InseeFrLab/onyxia}{\textit{Onyxia}}). Build and Administration of the K8s cluster}
-\resumeJobMission{Modernization of the old data science platform (TypeScript, Windows Server)}{Migration of Windows Server services to K8s, process automation, reduction of \textit{time to market} and technical debt.}
-\resumeJobMission{Support for Data Scientists (Jupyter Notebook, RStudio Server, PyCharm, VS Code, mlflow)}{Incident resolution, integration of production Data Science and Machine Learning services.}
+\resumeJobMission{Data platform engineering}{Go, Kubernetes, Helm, Docker, Podman, GitLab CI/CD, GitHub Actions, ArgoCD, Vault, \\Prometheus, Grafana, Elasticsearch, Loki, Kibana, OpenTelemetry, Terraform, S3, Scrum, Kanban, Sprint}{Product mode, Agile, \textit{Build} and \textit{Run} of the containerized \textit{PaaS} (\href{https://github.com/InseeFrLab/onyxia}{\textit{Onyxia}}). K8s cluster administrator}
+\resumeJobMission{Modernization of the old data science platform}{TypeScript, React, Vite, Gitlab CI/CD}{Migration of data services from Windows Server to K8s, process automation, reduction of \textit{time to market} and technical debt.}
+\resumeJobMission{Build and Run of Data Science Services}{Jupyter Notebook, RStudio Server, PyCharm, mlflow}{Integration of new production Data Science and Machine Learning services, incident resolution,}
 \resumeProjectListEnd
 
-\resumeSubheading{INSEE}{Nantes, France}{Data plateform Engineer}{2020 -- 2021}{tex/Logo_INSEE_carre.png}
+\resumeSubheading{INSEE}{Nantes, France}{DevOps data plateform Engineer}{2020 -- 2021}{tex/Logo_INSEE_carre.png}
 \resumeProjectListStart
-\resumeJobMission{System administration of the data science platform (VM Ware, AGDLP, OIDC, Active Directory, Puppet, Ansible)}{Build and Run of components for 500\Plus daily data scientists saving 80\% time to production for the shared self-service services.}
-\resumeJobMission{Build and Run of a resource monitoring system (PowerShell, TaskManager)}{Supervision and planning of shared physical resource allocation, SMTP alerting, recovery of 20\Plus of used resources.}
-\resumeJobMission{Migration from proprietary language used for 20\Plus years to open source (SAS)}{Translation of production project code. \textit{Blue-green} and \textit{canary} methods. Development of migration tools.}
+\resumeJobMission{System administration of the data science platform}{VM Ware, Puppet, Ansible, Rundeck, Active Directory, OIDC}{Build and Run of components for 500\Plus daily data scientists saving 80\% time to production for the shared self-service services.}
+\resumeJobMission{Developed a resource optimizer system for green IT}{PowerShell, TaskManager}{Supervision and planning of shared physical resource allocation, SMTP alerting, economy of 20\%\Plus of used resources.}
+\resumeJobMission{Migration from proprietary language used for 20\Plus years to open source}{R, Python}{Developped migration tools to translate production project code, using \textit{Blue-green} and \textit{canary} methods.}
 \resumeProjectListEnd
 
 \resumeSubheading{Central Statistics Office}{Dublin, Ireland}{End-of-studies Internship}{Summer 2020}{tex/Logo_CSO_carre.png}
 \resumeProjectListStart
-\resumeJobMission{Machine learning on meteorological data}{Specifications and POC of the OCR pipeline for automatic reading of 250\Plus years of monthly manual records.}
-\resumeJobMission{Statistical Assistant}{Ireland's official annual reports. Parameterized pipeline for report generation.}
+\resumeJobMission{Machine learning on meteorological data}{SAS}{Specifications and POC of the OCR pipeline for automatic reading of 250\Plus years of monthly manual records.}
+\resumeJobMission{Statistical Assistant}{Microsoft Office}{Ireland's official annual reports. Parameterized pipeline for report generation.}
 \resumeProjectListEnd
 \resumeSubHeadingListEnd
 
