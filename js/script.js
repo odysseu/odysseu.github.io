@@ -90,10 +90,10 @@ function updateDarkModeButton(isDark) {
 function downloadCV(version) {
     const link = document.createElement('a');
     const mappings = {
-        'english_simple': { href: 'pdf/cv_english_simple.pdf', name: 'Ulysse_Boucherie_CV_English_Simple.pdf' },
-        'english_full': { href: 'pdf/cv_english.pdf', name: 'Ulysse_Boucherie_CV_English_Full.pdf' },
-        'french_simple': { href: 'pdf/cv_french_simple.pdf', name: 'Ulysse_Boucherie_CV_French_Simple.pdf' },
-        'french_full': { href: 'pdf/cv_french.pdf', name: 'Ulysse_Boucherie_CV_French_Full.pdf' }
+        'english_simple': { href: 'pdf/cv_english_simple.pdf', name: 'CV_Ulysse_Boucherie_English.pdf' },
+        'english_full': { href: 'pdf/cv_english.pdf', name: 'CV_Ulysse_Boucherie_English.pdf' },
+        'french_simple': { href: 'pdf/cv_french_simple.pdf', name: 'CV_Ulysse_Boucherie_Français.pdf' },
+        'french_full': { href: 'pdf/cv_french.pdf', name: 'CV_Ulysse_Boucherie_Français.pdf' }
     };
 
     const mapping = mappings[version];
