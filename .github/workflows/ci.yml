@@ -6,7 +6,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: dhi.io/python:3
     permissions:
       pages: write
       id-token: write
@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y ghostscript python3 python3-pip git texlive texlive-latex-extra texlive-fonts-extra texlive-lang-french
+          sudo apt-get install -y ghostscript git texlive texlive-latex-extra texlive-fonts-extra texlive-lang-french
           pip3 install Pillow
 
       - name: Build CV website
