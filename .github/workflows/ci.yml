@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           apt-get update
-          apt-get install -y ghostscript git texlive texlive-latex-extra texlive-fonts-extra texlive-lang-french
+          apt-get install -y tree ghostscript git texlive texlive-latex-extra texlive-fonts-extra texlive-lang-french
           pip3 install Pillow
 
       - name: Build CV website
