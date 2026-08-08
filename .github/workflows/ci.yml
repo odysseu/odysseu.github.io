@@ -6,8 +6,8 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest  # Machine hôte (obligatoire)
-    container: dhi.io/python:3-slim  # Image Docker
+    runs-on: ubuntu-latest
+    container: python:3-alpine
     permissions:
       pages: write
       id-token: write
